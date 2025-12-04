@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCube : MonoBehaviour
+public class JangJaewoo : MonoBehaviour
 {
     private void Update()
     {
