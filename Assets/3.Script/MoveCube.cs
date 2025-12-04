@@ -7,6 +7,6 @@ public class MoveCube : MonoBehaviour
 {
     private void Update()
     {
-        gameObject.transform.Rotate(new Vector3(10f, 20f, 30f) * Time.deltaTime * 10);
+        gameObject.transform.Rotate(new Vector3(16f, 21f, 33f) * Time.deltaTime * 10);
     }
 }
