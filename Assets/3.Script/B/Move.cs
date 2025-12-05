@@ -8,14 +8,16 @@ using UnityEngine.InputSystem;
 public class Move : MonoBehaviour
 {
     [SerializeField] private Transform[] lanes;
-    [SerializeField] private Rigidbody playerRigid;
-    [SerializeField] private int currentLane = 1;
     [SerializeField] private float jumpPower = 5f;
-    [SerializeField] private bool isJumping = false;
+    private Animator playerAnimator;
+    private Rigidbody playerRigid;
+    private int currentLane = 1;
+    private bool isJumping = false;
 
     private void Awake()
     {
         TryGetComponent(out playerRigid);
+        TryGetComponent(out playerAnimator);
         //AudioManager.Instance.PlayBGM("BGM_Kart"); // BGM을 보스 테마로 변경
     }
 
@@ -26,10 +28,12 @@ public class Move : MonoBehaviour
         if (input > 0)
         {
             MoveLane(1);
+            StartCoroutine(MoveAnimation_co("MoveRight"));
         }
         else if (input < 0)
         {
             MoveLane(-1);
+            StartCoroutine(MoveAnimation_co("MoveLeft"));
         }
     }
 
@@ -40,6 +44,8 @@ public class Move : MonoBehaviour
             isJumping = true;
 
             playerRigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+
+            playerAnimator.SetBool("IsJump", true);
         }
         //AudioManager.Instance.PlaySFX("SFX_Jump");
     }
@@ -62,6 +68,17 @@ public class Move : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isJumping = false;
+
+        playerAnimator.SetBool("IsJump", false);
+    }
+
+    private IEnumerator MoveAnimation_co(string para_name)
+    {
+        playerAnimator.SetBool(para_name, true);
+
+        yield return new WaitForSeconds(0.05f);
+
+        playerAnimator.SetBool(para_name, false);
     }
 
 }

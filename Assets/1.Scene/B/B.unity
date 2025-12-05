@@ -323,8 +323,9 @@ GameObject:
   m_Component:
   - component: {fileID: 779645437}
   - component: {fileID: 779645436}
+  - component: {fileID: 779645438}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,12 +355,33 @@ Transform:
   m_GameObject: {fileID: 779645435}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 964.9281, y: 0, z: 2522.1272}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &779645438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779645435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4968a25679d1eb54ebbf93f8a30858fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  lanePositions:
+  - {fileID: 1350604800}
+  - {fileID: 1668850250}
+  - {fileID: 881069819}
+  obstaclePrefabs:
+  - {fileID: 5077031805237854347, guid: 097715b48e0a47149a1902069b60cc4a, type: 3}
+  - {fileID: 631815037293422509, guid: 66dee572e6303f34f914e2a50f44df67, type: 3}
+  - {fileID: 9146305905338276383, guid: 98827f9003663e341a9e5cc76abc2e6a, type: 3}
+  - {fileID: 6305785080465449260, guid: 0cba0abd4489aa140a892d902144496a, type: 3}
 --- !u!1 &881069818
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +787,7 @@ GameObject:
   - component: {fileID: 1154047719}
   - component: {fileID: 1154047718}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1458,10 +1480,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 756006397}
   - {fileID: 1399403938}
+  - {fileID: 779645437}
   - {fileID: 1154047721}
   - {fileID: 1497189269}
   - {fileID: 2060971919}
   - {fileID: 1023606773}
   - {fileID: 663837276}
   - {fileID: 1670387689}
-  - {fileID: 779645437}
