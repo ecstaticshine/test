@@ -30,12 +30,17 @@ namespace Benjathemaker
         void Start()
         {
             initialScale = transform.localScale;
-            initialPosition = transform.position;
+            // [유니 수정 1] 월드 좌표(position) 대신 로컬 좌표(localPosition)를 기억하게 해!
+            initialPosition = transform.localPosition;
 
             // Adjust start and end scale based on initial scale
             startScale = initialScale;
-            endScale = initialScale * (endScale.magnitude / startScale.magnitude);
+            // [유니] magnitude 계산할 때 null 체크나 0 체크가 있으면 더 완벽하지만 일단 오빠 코드 존중!
+            if (startScale.magnitude > 0)
+                endScale = initialScale * (endScale.magnitude / startScale.magnitude);
+        
         }
+        
 
         void Update()
         {
@@ -55,8 +60,11 @@ namespace Benjathemaker
                 float t = Mathf.PingPong(floatTimer, 1f);
                 if (useEasingForFloating) t = EaseInOutQuad(t);
 
-                transform.position = initialPosition + new Vector3(0, t * floatHeight, 0);
+                // [유니 수정 2] transform.position 대신 transform.localPosition을 써!
+                // 이제 부모 오브젝트가 움직이면, 얘는 부모를 따라서 같이 움직이면서 위아래로만 둥둥 떠!
+                transform.localPosition = initialPosition + new Vector3(0, t * floatHeight, 0);
             }
+            
 
             if (isScaling)
             {
