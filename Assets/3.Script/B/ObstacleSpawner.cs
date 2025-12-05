@@ -18,12 +18,12 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private float timebetObstacleRespawn = 2f;
     private float lastObstacleRespawnTime;
     private int rnd;
-    private Vector3 obstacleOffset = new Vector3(0f, 0f, 45f);
+    private Vector3 obstacleOffset_Y = new Vector3(0f, -0.5f, 0f);
+    private Vector3 obstacleOffset_Z = new Vector3(0f, 0f, 45f);
 
     private void Start()
     {
         rnd = UnityEngine.Random.Range(0,3);
-        Debug.Log(rnd);
     }
 
     private void Update()
@@ -38,34 +38,31 @@ public class Obstacle : MonoBehaviour
                     Instantiate
                         (
                         obstaclePrefabs[0],
-                        lanePositions[UnityEngine.Random.Range(0, lanePositions.Length)].position + obstacleOffset,
+                        lanePositions[UnityEngine.Random.Range(0, lanePositions.Length)].position + obstacleOffset_Z,
                         Quaternion.identity
                         );
 
                     rnd = UnityEngine.Random.Range(0, 3);
-                    Debug.Log(rnd);
                     break;
                 case 1:
                     Instantiate
                         (
                         obstaclePrefabs[UnityEngine.Random.Range(1, 2)],
-                        laneMiddlePosition[UnityEngine.Random.Range(0, laneMiddlePosition.Length)].position + obstacleOffset,
+                        laneMiddlePosition[UnityEngine.Random.Range(0, laneMiddlePosition.Length)].position + obstacleOffset_Z,
                         Quaternion.identity
                         );
 
                     rnd = UnityEngine.Random.Range(0, 3);
-                    Debug.Log(rnd);
                     break;
                 case 2:
                     Instantiate
                         (
                         obstaclePrefabs[3],
-                        lanePositions[1].position + obstacleOffset,
+                        lanePositions[1].position + obstacleOffset_Y + obstacleOffset_Z,
                         Quaternion.identity
                         );
 
                     rnd = UnityEngine.Random.Range(0, 3);
-                    Debug.Log(rnd);
                     break;
             }
         }
