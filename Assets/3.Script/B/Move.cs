@@ -16,7 +16,7 @@ public class Move : MonoBehaviour
     private void Awake()
     {
         TryGetComponent(out playerRigid);
-        AudioManager.Instance.PlayBGM("BGM_Kart"); // BGM을 보스 테마로 변경
+        //AudioManager.Instance.PlayBGM("BGM_Kart"); // BGM을 보스 테마로 변경
     }
 
     public void OnMove(InputValue value)
@@ -41,7 +41,7 @@ public class Move : MonoBehaviour
 
             playerRigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
-        AudioManager.Instance.PlaySFX("SFX_Jump");
+        //AudioManager.Instance.PlaySFX("SFX_Jump");
     }
 
     private void MoveLane(int direction)
