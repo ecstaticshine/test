@@ -41,11 +41,11 @@ public class Move : MonoBehaviour
     {
         if(value.isPressed && !isJumping)
         {
+            playerAnimator.SetBool("IsJump", true);
+            
             isJumping = true;
 
             playerRigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-
-            playerAnimator.SetBool("IsJump", true);
         }
         //AudioManager.Instance.PlaySFX("SFX_Jump");
     }
@@ -62,14 +62,13 @@ public class Move : MonoBehaviour
 
             transform.position = new Vector3(targetPos.x, transform.position.y, transform.position.z);
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        isJumping = false;
-
         playerAnimator.SetBool("IsJump", false);
+        
+        isJumping = false;
     }
 
     private IEnumerator MoveAnimation_co(string para_name)
