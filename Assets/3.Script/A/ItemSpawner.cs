@@ -39,25 +39,40 @@ public class ItemSpawner : MonoBehaviour
         {
             Vector3 spawnPos = setRandomPosition();
             GameObject coin = Instantiate(coinPrefab, spawnPos, Quaternion.identity);
-            coin.transform.SetParent(plane1.transform);
+            coin.transform.SetParent(GetBackPlane());
             itemList.Add(coin);
         }
         Vector3 heartPos = setRandomPosition();
         GameObject heart = Instantiate(heartPrefab, heartPos, Quaternion.identity);
-        heart.transform.SetParent(plane1.transform);
+        heart.transform.SetParent(GetBackPlane());
         itemList.Add(heart);
 
     }
 
-    public void Update()
+    public void RequestRespawn(GameObject item)
     {
-        for (int i = 0; i < itemList.Count; i++)
-        {
-            if (!itemList[i].activeSelf)
-            {
-                itemList[i].SetActive(true);
-            }
+        StartCoroutine(RespawnCoroutine(item));
+    }
 
-        }
+    IEnumerator RespawnCoroutine(GameObject item)
+    {
+        yield return new WaitForSeconds(10f);
+
+        // plane 랜덤 재배정
+        item.transform.SetParent(GetBackPlane(), true);
+
+        // 위치 재배정
+        item.transform.position = setRandomPosition();
+
+        // 다시 활성화
+        item.SetActive(true);
+    }
+
+    public Transform GetBackPlane()
+    {
+        // Z가 더 큰 plane이 화면 뒤쪽에 있다고 가정
+        return plane1.transform.position.z > plane2.transform.position.z
+            ? plane1.transform
+            : plane2.transform;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     [Header("아이템 설정")]
     public int coinScore = 100;      // 코인 점수
     public int healToScore = 500;    // 회복템 -> 점수 변환 시 점수
+
+    [SerializeField] private TMP_Text ScoreText;
 
     void Awake()
     {
@@ -60,5 +63,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("게임 오버");
             // 여기서 게임 오버 UI 띄우기
         }
+    }
+
+    private void Update()
+    {
+        ScoreText.text = string.Format("SCORE : {0:D6}",score);
     }
 }
