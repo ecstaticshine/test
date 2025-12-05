@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &350982673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 350982674}
+  m_Layer: 0
+  m_Name: Lane_2.5
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &350982674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350982673}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.5, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2060971919}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &663837272
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,11 +408,15 @@ MonoBehaviour:
   - {fileID: 1350604800}
   - {fileID: 1668850250}
   - {fileID: 881069819}
+  laneMiddlePosition:
+  - {fileID: 1349438678}
+  - {fileID: 350982674}
   obstaclePrefabs:
   - {fileID: 5077031805237854347, guid: 097715b48e0a47149a1902069b60cc4a, type: 3}
   - {fileID: 631815037293422509, guid: 66dee572e6303f34f914e2a50f44df67, type: 3}
   - {fileID: 9146305905338276383, guid: 98827f9003663e341a9e5cc76abc2e6a, type: 3}
   - {fileID: 6305785080465449260, guid: 0cba0abd4489aa140a892d902144496a, type: 3}
+  timebetObstacleRespawn: 2
 --- !u!1 &881069818
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1023606767
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -540,10 +575,7 @@ MonoBehaviour:
   - {fileID: 1350604800}
   - {fileID: 1668850250}
   - {fileID: 881069819}
-  playerRigid: {fileID: 0}
-  currentLane: 1
   jumpPower: 5
-  isJumping: 0
 --- !u!136 &1023606770
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -885,6 +917,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1349438677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1349438678}
+  m_Layer: 0
+  m_Name: Lane_1.5
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1349438678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349438677}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2060971919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1350604799
 GameObject:
@@ -1470,7 +1533,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1350604800}
+  - {fileID: 1349438678}
   - {fileID: 1668850250}
+  - {fileID: 350982674}
   - {fileID: 881069819}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
