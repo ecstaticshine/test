@@ -354,6 +354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 779645437}
   - component: {fileID: 779645436}
+  - component: {fileID: 779645439}
   - component: {fileID: 779645438}
   m_Layer: 0
   m_Name: Manager
@@ -375,8 +376,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeText
   timeText: {fileID: 1145598599}
-  gameTime: 0
-  maxGameTime: 60
 --- !u!4 &779645437
 Transform:
   m_ObjectHideFlags: 0
@@ -416,7 +415,26 @@ MonoBehaviour:
   - {fileID: 631815037293422509, guid: 66dee572e6303f34f914e2a50f44df67, type: 3}
   - {fileID: 9146305905338276383, guid: 98827f9003663e341a9e5cc76abc2e6a, type: 3}
   - {fileID: 6305785080465449260, guid: 0cba0abd4489aa140a892d902144496a, type: 3}
-  timebetObstacleRespawn: 2
+  startSpawnTime: 3
+  endSpawnTime: 0.5
+--- !u!114 &779645439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779645435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6249d28725dc736409c6248bae4e5dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::B_GameManager
+  gameTime: 0
+  maxGameTime: 5
+  isBoss: 0
+  isLive: 1
+  character: 0
+  score: 0
 --- !u!1 &881069818
 GameObject:
   m_ObjectHideFlags: 0
