@@ -12077,7 +12077,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -19678,10 +19678,7 @@ MonoBehaviour:
   - {fileID: 1841127299}
   - {fileID: 802386202}
   - {fileID: 1075968515}
-  playerRigid: {fileID: 0}
-  currentLane: 1
   jumpPower: 5
-  isJumping: 0
 --- !u!1 &546478161117617088
 GameObject:
   m_ObjectHideFlags: 0
