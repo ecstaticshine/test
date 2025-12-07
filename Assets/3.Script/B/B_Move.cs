@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class B_Move : MonoBehaviour
 {
     [SerializeField] private Transform[] lanes;
+    [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpPower = 5f;
     private Rigidbody playerRigid;
     private int currentLane = 1;
@@ -15,6 +16,13 @@ public class B_Move : MonoBehaviour
     private void Awake()
     {
         TryGetComponent(out playerRigid);
+    }
+
+    private void Update()
+    {
+        Vector3 targetPosition = new Vector3(lanes[currentLane].position.x, transform.position.y, transform.position.z);
+
+        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 
     public void OnMove(InputValue value)
@@ -45,7 +53,7 @@ public class B_Move : MonoBehaviour
     {
         int targetLane = currentLane + direction;
 
-        if (targetLane >= 0 && targetLane <= lanes.Length && targetLane <= 2)
+        if (targetLane >= 0 && targetLane < lanes.Length)
         {
             currentLane = targetLane;
 

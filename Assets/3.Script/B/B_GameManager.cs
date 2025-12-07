@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ public class B_GameManager : MonoBehaviour
     public bool  isLive = true;
     public int   character = 0;
     public int   score = 0;
+
+    private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
     private void Awake()
     {
@@ -58,5 +61,41 @@ public class B_GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         this.score += score;
+    }
+
+    public GameObject Get(GameObject prefab, Vector3 position, Quaternion rotation)
+    {
+        if (!poolDictionary.ContainsKey(prefab.name))
+        {
+            poolDictionary.Add(prefab.name, new Queue<GameObject>());
+        }
+
+        if (poolDictionary[prefab.name].Count > 0)
+        {
+            GameObject obj = poolDictionary[prefab.name].Dequeue();
+            obj.SetActive(true);
+            obj.transform.position = position;
+            obj.transform.rotation = rotation;
+            return obj;
+        }
+        else
+        {
+            GameObject newObj = Instantiate(prefab, position, rotation);
+            newObj.name = prefab.name;
+            return newObj;
+        }
+    }
+
+    public void Return(GameObject obj)
+    {
+        if (poolDictionary.ContainsKey(obj.name))
+        {
+            obj.SetActive(false);
+            poolDictionary[obj.name].Enqueue(obj);
+        }
+        else
+        {
+            Destroy(obj);
+        }
     }
 }
