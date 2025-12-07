@@ -61,7 +61,7 @@ public class ObstacleSpawner : MonoBehaviour
             case 1:
                 B_GameManager.instance.Get
                     (
-                    obstaclePrefabs[UnityEngine.Random.Range(1, 2)],
+                    obstaclePrefabs[UnityEngine.Random.Range(1, 3)],
                     laneMiddlePosition[UnityEngine.Random.Range(0, laneMiddlePosition.Length)].position + obstacleOffset_Z,
                     Quaternion.identity
                     );

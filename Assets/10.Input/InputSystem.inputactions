@@ -140,7 +140,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";PC",
                     "action": "Slide",
                     "isComposite": false,
                     "isPartOfComposite": false
