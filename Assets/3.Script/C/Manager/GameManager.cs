@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,9 +17,16 @@ public class GameManager : MonoBehaviour
     public int coinScore = 100;      // 코인 점수
     public int healToScore = 500;    // 회복템 -> 점수 변환 시 점수
 
+    public TMP_Text Score_Text;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
+    }
+
+    private void Update()
+    {
+        Score_Text.text = string.Format("SCORE : {0:D6}", score);
     }
 
     // 코인 획득 시 호출
