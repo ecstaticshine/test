@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour
 {
-
-    //신재호님 도움
+    //신재호님 어시스트
     public float speed;
 
     private void Update()
     {
         gameObject.transform.Translate(Vector3.back * speed * Time.deltaTime);
 
-        Destroy(gameObject, 5f);
+        if (transform.position.z < -15f)
+        {
+            B_GameManager.instance.Return(gameObject);
+        }
     }
 }

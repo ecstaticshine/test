@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class ObstacleSpawner : MonoBehaviour
 {
     [Header("ÂüÁ¶")]
     [SerializeField] private Transform[] lanePositions;
@@ -28,6 +28,8 @@ public class Obstacle : MonoBehaviour
 
     private void Update()
     {
+        if (B_GameManager.instance.isBoss) return;
+
         float timeRatio = B_GameManager.instance.gameTime / B_GameManager.instance.maxGameTime;
 
         timeRatio = Mathf.Clamp01(timeRatio);
@@ -47,7 +49,7 @@ public class Obstacle : MonoBehaviour
         switch (rnd)
         {
             case 0:
-                Instantiate
+                B_GameManager.instance.Get
                     (
                     obstaclePrefabs[0],
                     lanePositions[UnityEngine.Random.Range(0, lanePositions.Length)].position + obstacleOffset_Z,
@@ -57,7 +59,7 @@ public class Obstacle : MonoBehaviour
                 rnd = UnityEngine.Random.Range(0, 3);
                 break;
             case 1:
-                Instantiate
+                B_GameManager.instance.Get
                     (
                     obstaclePrefabs[UnityEngine.Random.Range(1, 2)],
                     laneMiddlePosition[UnityEngine.Random.Range(0, laneMiddlePosition.Length)].position + obstacleOffset_Z,
@@ -67,7 +69,7 @@ public class Obstacle : MonoBehaviour
                 rnd = UnityEngine.Random.Range(0, 3);
                 break;
             case 2:
-                Instantiate
+                B_GameManager.instance.Get
                     (
                     obstaclePrefabs[3],
                     lanePositions[1].position + obstacleOffset_Y + obstacleOffset_Z,
