@@ -66,6 +66,7 @@ public class SceneLoader : MonoBehaviour
     {
         PlayClickSound();
         Time.timeScale = 1f; // ∏ÿ√· Ω√∞£ ¥ŸΩ√ »Â∏£∞‘
+        B_GameManager.instance.canGameOverInput = false;
         SceneManager.LoadScene("Main"); // πŸ∑Œ ∏ﬁ¿Œ¿∏∑Œ
     }
 

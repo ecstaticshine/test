@@ -33,6 +33,8 @@ public class B_GameManager : MonoBehaviour
     public int coinScore = 100;      // 코인 점수
     public int healToScore = 500;    // 회복템 -> 점수 변환 시 점수
 
+    public bool canGameOverInput = false;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -87,10 +89,10 @@ public class B_GameManager : MonoBehaviour
 
         if (!isLive || isClear)
         {
-            wait_Co();
+            StartCoroutine(GameOverDelay());
 
             // 사용자가 아무 키나 누르면
-            if (Input.anyKeyDown)
+            if (canGameOverInput && Input.anyKeyDown)
             {
                 SaveData data = ScoreManager.instance.showData();
 
@@ -125,9 +127,10 @@ public class B_GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator wait_Co()
+    public IEnumerator GameOverDelay()
     {
         yield return new WaitForSeconds(5f);
+        canGameOverInput = true;
     }
 
     private void SetUpCharacter(GameObject characterObject)
