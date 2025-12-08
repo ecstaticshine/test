@@ -59,6 +59,11 @@ public class ScoreManager : MonoBehaviour
             data.list.RemoveAt(10);
         }
 
+        if (playerScore > data.HighScore)
+        {
+            data.HighScore = playerScore;
+        }
+
         Save(data);
     }
 
