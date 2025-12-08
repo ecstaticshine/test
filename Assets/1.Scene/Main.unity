@@ -12372,6 +12372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c001e74b0456d4a9301f5e99a52adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSky
+  backGround: {fileID: 760135611}
+  Day: {fileID: 2100000, guid: 65305f5728155ab47bf8b5059de64fa3, type: 2}
+  Night: {fileID: 2100000, guid: 6126a592c4db03044a628a71466d30f8, type: 2}
   StageTime: 60
   changeTime: 3
   DayLightSetting:
@@ -12379,7 +12382,7 @@ MonoBehaviour:
     lightIntensity: 1
   NightLightSetting:
     lightColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 0}
-    lightIntensity: 0
+    lightIntensity: 1
 --- !u!23 &2143333110
 MeshRenderer:
   m_ObjectHideFlags: 0

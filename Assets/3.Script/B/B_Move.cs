@@ -10,6 +10,7 @@ public class B_Move : MonoBehaviour
     [SerializeField] private float gravityScale = 2.0f;
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpPower = 5f;
+
     private Animator playerAnimator;
     private Rigidbody playerRigid;
     private int currentLane = 1;

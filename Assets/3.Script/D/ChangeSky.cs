@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.RayTracingAccelerationStructure;
 
 public enum TimeState
 {
@@ -19,13 +18,17 @@ public struct LightSettings
 
 public class ChangeSky : MonoBehaviour
 {
+    [SerializeField] private GameObject backGround;
+    [SerializeField] private Material Day;
+    [SerializeField] private Material Night;
+
     private Light lightChanger;
-    private Coroutine changeRoutine;// 코루틴 제어
+    private Coroutine changeRoutine;
+    private Renderer rd;
 
     [Header("빛 시간 설정")]
     public float StageTime = 60f;
     public float changeTime = 3f;
-
 
     [Header("빛 색상")]
     public LightSettings DayLightSetting;
@@ -34,16 +37,22 @@ public class ChangeSky : MonoBehaviour
     private void Awake()
     {
         TryGetComponent(out lightChanger);
+        rd = backGround.GetComponent<Renderer>();
     }
+
     private void Start()
     {
         if (lightChanger != null)
         {
             lightChanger.color = DayLightSetting.lightColor;
             lightChanger.intensity = DayLightSetting.lightIntensity;
+
+            if (rd != null) rd.material = Day;
+
             changeRoutine = StartCoroutine(DayNight_co());
         }
     }
+
     private IEnumerator DayNight_co()
     {
         TimeState currentState = TimeState.Day;
@@ -52,50 +61,47 @@ public class ChangeSky : MonoBehaviour
         {
             LightSettings fromSettings;
             LightSettings toSettings;
-            TimeState nextState;
-            if (currentState == TimeState.Day)
-            {
-                // 낮 -> 밤 전환 준비
-                fromSettings = DayLightSetting;
-                toSettings = NightLightSetting;
-                nextState = TimeState.Night;
-            }
-            else // TimeState.Night
-            {
-                // 밤 -> 낮 전환 준비
-                fromSettings = NightLightSetting;
-                toSettings = DayLightSetting;
-                nextState = TimeState.Day;
-            }
+            Material nextSkybox;
 
             yield return new WaitForSeconds(StageTime);
+
+            if (currentState == TimeState.Day)
+            {
+                fromSettings = DayLightSetting;
+                toSettings = NightLightSetting;
+                nextSkybox = Night;
+                currentState = TimeState.Night;
+            }
+            else
+            {
+                fromSettings = NightLightSetting;
+                toSettings = DayLightSetting;
+                nextSkybox = Day;
+                currentState = TimeState.Day;
+            }
+
             yield return StartCoroutine(Transition_co(fromSettings, toSettings, changeTime));
 
-            currentState = nextState;
-
+            if (rd != null) rd.material = nextSkybox;
         }
-
     }
+
     private IEnumerator Transition_co(LightSettings fromSettings, LightSettings toSettings, float duration)
     {
         float elapsedTime = 0f;
-        while(elapsedTime < duration)
+        while (elapsedTime < duration)
         {
-            elapsedTime += Time.deltaTime; 
+            elapsedTime += Time.deltaTime;
 
-            // 0.0 ~ 1.0 사이의 진행률 계산 및 클램프
             float progress = Mathf.Clamp01(elapsedTime / duration);
 
             lightChanger.color = Color.Lerp(fromSettings.lightColor, toSettings.lightColor, progress);
-
             lightChanger.intensity = Mathf.Lerp(fromSettings.lightIntensity, toSettings.lightIntensity, progress);
 
-            yield return null; // 다음 프레임까지 대기
+            yield return null;
         }
 
-        // 최종 목표 상태로 정확히 설정하여 오차 방지
         lightChanger.color = toSettings.lightColor;
         lightChanger.intensity = toSettings.lightIntensity;
     }
 }
-
