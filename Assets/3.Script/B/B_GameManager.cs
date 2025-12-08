@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class B_GameManager : MonoBehaviour
 {
@@ -52,19 +53,24 @@ public class B_GameManager : MonoBehaviour
     {
         if (!isLive || isClear)
         {
+            wait_Co();
 
-            SaveData data = ScoreManager.instance.showData();
-
-            if (data.list.Count < 10)
+            // 사용자가 아무 키나 누르면
+            if (Input.anyKeyDown)
             {
-                SceneLoader.Instance.LoadInputScoreScene(score);
-            }
-            else
-            {
+                SaveData data = ScoreManager.instance.showData();
 
-                if (score > data.list[9].playerScore)
+                if (data.list.Count < 10)
                 {
                     SceneLoader.Instance.LoadInputScoreScene(score);
+                }
+                else
+                {
+
+                    if (score > data.list[9].playerScore)
+                    {
+                        SceneLoader.Instance.LoadInputScoreScene(score);
+                    }
                 }
             }
         }
@@ -84,6 +90,12 @@ public class B_GameManager : MonoBehaviour
             Score_Text.text = string.Format("SCORE : {0:D6}", score);
         }
     }
+
+    public IEnumerator wait_Co()
+    {
+        yield return new WaitForSeconds(5f);
+    }
+
 
     public void GameStart(int characterNum)
     {
