@@ -73,7 +73,7 @@ public class B_Move : MonoBehaviour
 
             Vector3 targetPos = lanes[currentLane].position;
 
-            transform.position = new Vector3(targetPos.x, transform.position.y, transform.position.z);
+           // transform.position = new Vector3(targetPos.x, transform.position.y, transform.position.z);
         }
     }
 
