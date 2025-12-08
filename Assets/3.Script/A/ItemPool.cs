@@ -7,6 +7,7 @@ public class ItemPool : MonoBehaviour
 
     [Header("코인 프리팹")]
     public GameObject coinPrefab;
+    public GameObject heartPrefab;
 
     [Header("초기 생성 개수")]
     public int initialCount = 100;
@@ -27,6 +28,10 @@ public class ItemPool : MonoBehaviour
             obj.SetActive(false);
             pool.Enqueue(obj);
         }
+        GameObject heartObj = Instantiate(heartPrefab);
+        heartObj.SetActive(false);
+        pool.Enqueue(heartObj);
+
     }
 
     public GameObject GetCoin()

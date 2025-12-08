@@ -44,6 +44,28 @@ public class B_Player : MonoBehaviour
         }
     }
 
+    public int getCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int getMaxHealth()
+    {
+        return currentHealth;
+    }
+
+    public void healHealth()
+    {
+        if (currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth++;
+        }
+    }
+
     //private IEnumerator Invincible_co()
     //{
     //    isInvincible = true;

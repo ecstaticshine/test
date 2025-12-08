@@ -5513,7 +5513,7 @@ Transform:
   m_GameObject: {fileID: 1075968514}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10029,7 +10029,7 @@ Transform:
   m_GameObject: {fileID: 1841127298}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11069,6 +11069,7 @@ MonoBehaviour:
   character: 0
   score: 0
   Score_Text: {fileID: 1836144576}
+  player: {fileID: 546478161117617073}
   coinScore: 100
   healToScore: 500
 --- !u!114 &2014038255
