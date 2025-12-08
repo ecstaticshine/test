@@ -7,8 +7,8 @@ public class B_GameManager : MonoBehaviour
 {
     public static B_GameManager instance = null;
     public float gameTime = 0f;
-    public float maxGameTime = 15f;
-    public bool  isBoss = false;
+    //public float maxGameTime = 15f;
+    //public bool  isBoss = false;
     public bool  isLive = true;
     public bool  isClear = false;
     public int   character = 0;

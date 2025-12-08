@@ -18,16 +18,20 @@ public class TimeText : MonoBehaviour
 
     private void Update()
     {
-        remainTime = B_GameManager.instance.maxGameTime - B_GameManager.instance.gameTime;
-        min = Mathf.FloorToInt(remainTime / 60);
-        sec = Mathf.FloorToInt(remainTime % 60);
+        // remainTime = B_GameManager.instance.maxGameTime - B_GameManager.instance.gameTime;
+        // min = Mathf.FloorToInt(remainTime / 60);
+        // sec = Mathf.FloorToInt(remainTime % 60);
+        // timeText.text = string.Format("{0:D2}:{1:D2}", min, sec);
+
+        min = Mathf.FloorToInt(B_GameManager.instance.gameTime / 60);
+        sec = Mathf.FloorToInt(B_GameManager.instance.gameTime % 60);
         timeText.text = string.Format("{0:D2}:{1:D2}", min, sec);
 
-        if (B_GameManager.instance.gameTime >= B_GameManager.instance.maxGameTime)
+        if (!B_GameManager.instance.isLive || B_GameManager.instance.isClear)
         {
             timeText.enabled = false;
 
-            B_GameManager.instance.isBoss = true;
+            //B_GameManager.instance.isBoss = true;
         }
     }
 }

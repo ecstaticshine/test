@@ -48,7 +48,7 @@ public class B_Player : MonoBehaviour
 
     private void Update()
     {
-        if (B_GameManager.instance.gameTime >= B_GameManager.instance.maxGameTime && !isClear)
+        if (currentHealth <= 0 && !isClear)
         {
             B_GameManager.instance.isClear = true;
             isInvincible = true;
