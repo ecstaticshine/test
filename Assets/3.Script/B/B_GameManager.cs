@@ -9,10 +9,10 @@ public class B_GameManager : MonoBehaviour
     public float gameTime = 0f;
     //public float maxGameTime = 15f;
     //public bool  isBoss = false;
-    public bool  isLive = true;
-    public bool  isClear = false;
-    public int   character = 0;
-    public int   score = 0;
+    public bool isLive = true;
+    public bool isClear = false;
+    public int character = 0;
+    public int score = 0;
 
     private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
@@ -26,7 +26,7 @@ public class B_GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if   (instance == null) instance = this;
+        if (instance == null) instance = this;
         else Destroy(gameObject);
 
         Time.timeScale = 1;
@@ -48,11 +48,31 @@ public class B_GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isLive) return;
+        if (!isLive || isClear)
+        {
 
-        gameTime += Time.deltaTime;
+            SaveData data = ScoreManager.instance.showData();
 
-        Score_Text.text = string.Format("SCORE : {0:D6}", score);
+            if (data.list.Count < 10)
+            {
+                SceneLoader.Instance.LoadInputScoreScene(score);
+            }
+            else
+            {
+
+                if (score > data.list[9].playerScore)
+                {
+                    SceneLoader.Instance.LoadInputScoreScene(score);
+                }
+            }
+        }
+        else
+        {
+            gameTime += Time.deltaTime;
+
+            Score_Text.text = string.Format("SCORE : {0:D6}", score);
+
+        }
     }
 
     public void GameStart(int characterNum)

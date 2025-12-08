@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scene/Main.unity
     guid: 4fc77898f2ccb744ba7487f52bd96d1d
+  - enabled: 1
+    path: Assets/1.Scene/InputScore.unity
+    guid: 0fe9884ea273a57438c1fcda8ee8be23
+  - enabled: 1
+    path: Assets/1.Scene/Result.unity
+    guid: 85ef0b4e95a80914fb8b80c648bdfb9f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

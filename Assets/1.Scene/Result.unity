@@ -375,10 +375,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d86026906265c4dac6d38882d7eedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResultUIManager
-  HighScoreText: {fileID: 0}
-  leftContent: {fileID: 0}
-  rightContent: {fileID: 0}
-  rankingPrefab: {fileID: 0}
+  HighScoreText: {fileID: 1572443261}
+  leftContent: {fileID: 1606662071}
+  rightContent: {fileID: 1216886158}
+  rankingPrefab: {fileID: 3640630287956712596, guid: c53f101cab2b666438b2751a7f698169, type: 3}
 --- !u!1 &1009462379
 GameObject:
   m_ObjectHideFlags: 0
