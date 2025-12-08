@@ -11,13 +11,14 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private GameObject[] obstaclePrefabs;
 
     [Header("생성 주기")]
-    [SerializeField] private float startSpawnTime = 3f;
-    [SerializeField] private float endSpawnTime = 0.5f;
+    [SerializeField] private float difficultyReachTime = 15f;
+    [SerializeField] private float startSpawnTime = 2f;
+    [SerializeField] private float endSpawnTime = 0.2f;
 
     private float timebetObstacleRespawn;
     private float lastObstacleRespawnTime;
     private int rnd;
-    private Vector3 obstacleOffset_Y = new Vector3(0f, -0.5f, 0f);
+    private Vector3 obstacleOffset_Y = new Vector3(0f, 0.5f, 0f);
     private Vector3 obstacleOffset_Z = new Vector3(0f, 0f, 45f);
 
     private void Start()
@@ -28,9 +29,9 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (B_GameManager.instance.isBoss) return;
+        if (!B_GameManager.instance.isLive || B_GameManager.instance.isClear) return;
 
-        float timeRatio = B_GameManager.instance.gameTime / B_GameManager.instance.maxGameTime;
+        float timeRatio = B_GameManager.instance.gameTime / difficultyReachTime;
 
         timeRatio = Mathf.Clamp01(timeRatio);
 
@@ -72,7 +73,7 @@ public class ObstacleSpawner : MonoBehaviour
                 B_GameManager.instance.Get
                     (
                     obstaclePrefabs[3],
-                    lanePositions[1].position + obstacleOffset_Y + obstacleOffset_Z,
+                    lanePositions[1].position - obstacleOffset_Y + obstacleOffset_Z,
                     Quaternion.identity
                     );
 

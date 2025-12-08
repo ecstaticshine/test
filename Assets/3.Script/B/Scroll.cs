@@ -19,6 +19,8 @@ public class Scroll : MonoBehaviour
 
     private void Update()
     {
+        if (!B_GameManager.instance.isLive || B_GameManager.instance.isClear) return;
+
         MoveFloor();
     }
 

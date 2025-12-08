@@ -7,15 +7,18 @@ public class B_GameManager : MonoBehaviour
 {
     public static B_GameManager instance = null;
     public float gameTime = 0f;
-    public float maxGameTime = 15f;
-    public bool  isBoss = false;
+    //public float maxGameTime = 15f;
+    //public bool  isBoss = false;
     public bool  isLive = true;
+    public bool  isClear = false;
     public int   character = 0;
     public int   score = 0;
 
     private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
     public TMP_Text Score_Text;
+
+    public B_Player player;
 
     [Header("아이템 설정")]
     public int coinScore = 100;      // 코인 점수
@@ -85,19 +88,19 @@ public class B_GameManager : MonoBehaviour
     // 회복 아이템 획득 시 호출
     public void GetHealItem()
     {
-        //// 핵심 기획: 피가 꽉 찼으면 점수로!
-        //if (currentHealth >= maxHealth)
-        //{
-        //    score += healToScore;
-        //    Debug.Log("체력 Full! 점수로 변환: " + score);
-        //    AudioManager.Instance.PlaySFX("Coin"); // 돈 버는 소리
-        //}
-        //else
-        //{
-        //    currentHealth++;
-        //    Debug.Log("체력 회복! 현재 체력: " + currentHealth);
-        //    AudioManager.Instance.PlaySFX("Heal"); // 회복 소리
-        //}
+        // 핵심 기획: 피가 꽉 찼으면 점수로!
+        if (player.getCurrentHealth() >= player.getMaxHealth())
+        {
+            score += healToScore;
+            Debug.Log("체력 Full! 점수로 변환: " + score);
+            AudioManager.Instance.PlaySFX("Coin"); // 돈 버는 소리
+        }
+        else
+        {
+            player.healHealth();
+            Debug.Log("체력 회복! 현재 체력: " + player.getCurrentHealth());
+            AudioManager.Instance.PlaySFX("Heal"); // 회복 소리
+        }
     }
 
     public GameObject Get(GameObject prefab, Vector3 position, Quaternion rotation)

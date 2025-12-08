@@ -2335,6 +2335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPool
   coinPrefab: {fileID: 1580344074915586814, guid: 5e08341e28cc2ec4c808e4c27229b24e, type: 3}
+  heartPrefab: {fileID: 2606774521845603192, guid: 888bc26ea73feae4d8d6ff54ac601231, type: 3}
   initialCount: 30
 --- !u!114 &431693439
 MonoBehaviour:
@@ -5513,7 +5514,7 @@ Transform:
   m_GameObject: {fileID: 1075968514}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7647,7 +7648,7 @@ Transform:
   m_GameObject: {fileID: 1452202855}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8495,7 +8496,7 @@ MonoBehaviour:
   - {fileID: 631815037293422509, guid: 66dee572e6303f34f914e2a50f44df67, type: 3}
   - {fileID: 9146305905338276383, guid: 98827f9003663e341a9e5cc76abc2e6a, type: 3}
   - {fileID: 6305785080465449260, guid: 0cba0abd4489aa140a892d902144496a, type: 3}
-  startSpawnTime: 3
+  startSpawnTime: 2
   endSpawnTime: 0.5
 --- !u!4 &1583893391
 Transform:
@@ -9257,7 +9258,7 @@ Transform:
   m_GameObject: {fileID: 1758408046}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10029,7 +10030,7 @@ Transform:
   m_GameObject: {fileID: 1841127298}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11063,12 +11064,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B_GameManager
   gameTime: 0
-  maxGameTime: 15
+  maxGameTime: 30
   isBoss: 0
   isLive: 1
+  isClear: 0
   character: 0
   score: 0
   Score_Text: {fileID: 1836144576}
+  player: {fileID: 546478161117617073}
   coinScore: 100
   healToScore: 500
 --- !u!114 &2014038255
@@ -19577,7 +19580,7 @@ GameObject:
   - component: {fileID: 546478161117617067}
   - component: {fileID: 546478161117617069}
   - component: {fileID: 546478161117617071}
-  - component: {fileID: 546478161117617072}
+  - component: {fileID: 546478161117617075}
   - component: {fileID: 546478161117617073}
   m_Layer: 0
   m_Name: unitychan
@@ -19814,23 +19817,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &546478161117617072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546478161117617064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 015964e6611a2914f8fb5eef006dccbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Move
-  lanes:
-  - {fileID: 1841127299}
-  - {fileID: 802386202}
-  - {fileID: 1075968515}
-  jumpPower: 5
 --- !u!114 &546478161117617073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19846,7 +19832,7 @@ MonoBehaviour:
   heartUI: {fileID: 4113765442026208561}
   invincibleTime: 2
   blinkSpeed: 0.1
-  maxHealth: 5
+  maxHealth: 3
 --- !u!137 &546478161117617074
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -19906,6 +19892,25 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_DirtyAABB: 0
+--- !u!114 &546478161117617075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546478161117617064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e2e2cadb429f04aad70cc7b8c33aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::B_Move
+  lanes:
+  - {fileID: 1841127299}
+  - {fileID: 802386202}
+  - {fileID: 1075968515}
+  gravityScale: 5
+  moveSpeed: 10
+  jumpPower: 12
 --- !u!1 &546478161117617088
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,16 +7,36 @@ public class B_Player : MonoBehaviour
     [SerializeField] private float invincibleTime = 2f;
     [SerializeField] private float blinkSpeed = 0.1f;
     [SerializeField] private int maxHealth = 3;
-    //private MeshRenderer playerMR;
-    private Color originalColor;
+    [SerializeField] private SkinnedMeshRenderer[] playerMRs;
+    [SerializeField] private Color[] originalColors;
+    private Animator playerAni;
     private bool isInvincible = false;
+    private bool isClear = false;
     private int currentHealth;
 
     private void Awake()
     {
-        //TryGetComponent(out playerMR);
+        playerMRs = GetComponentsInChildren<SkinnedMeshRenderer>();
 
-        //originalColor = playerMR.material.color;
+        if (playerMRs != null && playerMRs.Length > 0)
+        {
+            originalColors = new Color[playerMRs.Length];
+
+            for (int i = 0; i < playerMRs.Length; i++)
+            {
+                if (playerMRs[i].material.HasProperty("_BaseColor"))
+                {
+
+                    originalColors[i] = playerMRs[i].material.GetColor("_Color");
+                }
+                else
+                {
+                    originalColors[i] = playerMRs[i].material.color;
+                }
+            }
+        }
+
+        TryGetComponent(out playerAni);
     }
 
     void Start()
@@ -24,6 +44,19 @@ public class B_Player : MonoBehaviour
         currentHealth = maxHealth;
 
         heartUI.CreateHearts(maxHealth);
+    }
+
+    private void Update()
+    {
+        if (currentHealth <= 0 && !isClear)
+        {
+            B_GameManager.instance.isClear = true;
+            isInvincible = true;
+
+            playerAni.SetBool("IsWin", true);
+
+            isClear = true;
+        }
     }
 
     public void OnDamaged(int damage)
@@ -40,30 +73,69 @@ public class B_Player : MonoBehaviour
         }
         else
         {
-            //StartCoroutine(Invincible_co());
+            StartCoroutine(OnDamaged_co());
         }
     }
 
-    //private IEnumerator Invincible_co()
-    //{
-    //    isInvincible = true;
-    //
-    //    float timer = 0f;
-    //
-    //    while (timer < invincibleTime)
-    //    {
-    //        if (playerMR != null) playerMR.material.color = Color.red;
-    //        yield return new WaitForSeconds(blinkSpeed);
-    //
-    //        if (playerMR != null) playerMR.material.color = originalColor;
-    //        yield return new WaitForSeconds(blinkSpeed);
-    //
-    //        timer += (blinkSpeed * 2);
-    //    }
-    //
-    //    if (playerMR != null) playerMR.material.color = originalColor;
-    //    isInvincible = false;
-    //}
+    public int getCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public void healHealth()
+    {
+        if (currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth++;
+        }
+    }
+
+    private IEnumerator OnDamaged_co()
+    {
+        isInvincible = true;
+
+        float timer = 0f;
+
+        while (timer < invincibleTime)
+        {
+            foreach (var mr in playerMRs)
+            {
+                if (mr == null) continue;
+                mr.material.color = Color.red;
+            }
+
+            yield return new WaitForSeconds(blinkSpeed);
+
+            for (int i = 0; i < playerMRs.Length; i++)
+            {
+                if (playerMRs[i] == null) continue;
+
+                playerMRs[i].material.color = originalColors[i];
+            }
+
+            yield return new WaitForSeconds(blinkSpeed);
+
+            timer += (blinkSpeed * 2);
+        }
+
+        for (int i = 0; i < playerMRs.Length; i++)
+        {
+            if (playerMRs[i] == null) continue;
+
+            playerMRs[i].material.color = originalColors[i];
+        }
+
+        isInvincible = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -76,5 +148,8 @@ public class B_Player : MonoBehaviour
     private void Die()
     {
         B_GameManager.instance.isLive = false;
+
+        playerAni.SetTrigger("IsLose");
     }
+
 }
