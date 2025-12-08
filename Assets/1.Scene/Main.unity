@@ -260,18 +260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Haru Urara
       objectReference: {fileID: 0}
-    - target: {fileID: 5543706751412192253, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6612233162664670443, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
       propertyPath: heartUI
       value: 
       objectReference: {fileID: 4113765442026208561}
-    - target: {fileID: 8226079107588330696, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
-      propertyPath: lanes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8226079107588330696, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
       propertyPath: 'lanes.Array.data[0]'
       value: 
@@ -282,18 +274,6 @@ PrefabInstance:
       objectReference: {fileID: 802386202}
     - target: {fileID: 8226079107588330696, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
       propertyPath: 'lanes.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1075968515}
-    - target: {fileID: 8226079107588330696, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
-      propertyPath: 'lanes.Array.data[3]'
-      value: 
-      objectReference: {fileID: 1841127299}
-    - target: {fileID: 8226079107588330696, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
-      propertyPath: 'lanes.Array.data[4]'
-      value: 
-      objectReference: {fileID: 802386202}
-    - target: {fileID: 8226079107588330696, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
-      propertyPath: 'lanes.Array.data[5]'
       value: 
       objectReference: {fileID: 1075968515}
     m_RemovedComponents: []
@@ -6595,10 +6575,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: unitychan
       objectReference: {fileID: 0}
-    - target: {fileID: 1721553631591812921, guid: 0e02575cd260b544190413c54a21f428, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5567595726358054879, guid: 0e02575cd260b544190413c54a21f428, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6643,10 +6619,6 @@ PrefabInstance:
       propertyPath: heartUI
       value: 
       objectReference: {fileID: 4113765442026208561}
-    - target: {fileID: 8009342834589539460, guid: 0e02575cd260b544190413c54a21f428, type: 3}
-      propertyPath: lanes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8009342834589539460, guid: 0e02575cd260b544190413c54a21f428, type: 3}
       propertyPath: 'lanes.Array.data[0]'
       value: 
@@ -13424,10 +13396,6 @@ PrefabInstance:
     - target: {fileID: 7292788158129102758, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
       propertyPath: m_Name
       value: BoxUnityChan
-      objectReference: {fileID: 0}
-    - target: {fileID: 7564179436916807957, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
-      propertyPath: lanes.Array.size
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7564179436916807957, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
       propertyPath: 'lanes.Array.data[0]'
@@ -25644,8 +25612,8 @@ SceneRoots:
   - {fileID: 317743762}
   - {fileID: 1102180647}
   - {fileID: 760135615}
+  - {fileID: 726187531}
+  - {fileID: 1821065360}
   - {fileID: 1261835630}
   - {fileID: 30870794}
   - {fileID: 1119039957488197060}
-  - {fileID: 726187531}
-  - {fileID: 1821065360}
