@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-
     public static SceneLoader Instance; // 어디서든 접근 가능한 정적 변수
 
     private void Awake()
