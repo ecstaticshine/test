@@ -119,6 +119,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &342520807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 342520809}
+  - component: {fileID: 342520808}
+  m_Layer: 0
+  m_Name: Title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &342520808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342520807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d405260a5ef0824abf2d6d1f32f9471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Title
+--- !u!4 &342520809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342520807}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 841.6928, y: 672.6779, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534553763
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +293,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 21efabd069c7b0f4d8fa3d25ed04d8cf, type: 3}
   - {fileID: 8300000, guid: 382d6a85dd07fa347b59103026daaa5c, type: 3}
   - {fileID: 8300000, guid: 1b46cfda612028b42be1c1e7f5db63c0, type: 3}
+  - {fileID: 8300000, guid: 3a5a2abd8e7ec5a45a78edb43fc2f37f, type: 3}
 --- !u!4 &650102591
 Transform:
   m_ObjectHideFlags: 0
@@ -454,6 +499,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 650102590}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Click
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &705217313
@@ -1024,3 +1081,4 @@ SceneRoots:
   - {fileID: 924037826}
   - {fileID: 1107571985}
   - {fileID: 650102591}
+  - {fileID: 342520809}
