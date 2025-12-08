@@ -131,10 +131,10 @@ public class B_GameManager : MonoBehaviour
 
     public IEnumerator GameOverDelay()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         GameOver.SetActive(true);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         canGameOverInput = true;
     }
 
