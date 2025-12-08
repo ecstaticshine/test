@@ -15,6 +15,8 @@ public class B_GameManager : MonoBehaviour
     public int score = 0;
 
     private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
+    private float scoreBuffer = 0f;
+    private float scorePerSecond = 1000f;
 
     public TMP_Text Score_Text;
 
@@ -70,8 +72,16 @@ public class B_GameManager : MonoBehaviour
         {
             gameTime += Time.deltaTime;
 
-            Score_Text.text = string.Format("SCORE : {0:D6}", score);
+            scoreBuffer += Mathf.RoundToInt(scorePerSecond * Time.deltaTime);
 
+            if (scoreBuffer >= scorePerSecond)
+            {
+                score += Mathf.RoundToInt(scorePerSecond);
+
+                scoreBuffer = 0;
+            }
+
+            Score_Text.text = string.Format("SCORE : {0:D6}", score);
         }
     }
 
