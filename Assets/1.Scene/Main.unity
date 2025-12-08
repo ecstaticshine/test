@@ -2335,7 +2335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPool
   coinPrefab: {fileID: 1580344074915586814, guid: 5e08341e28cc2ec4c808e4c27229b24e, type: 3}
-  heartPrefab: {fileID: 0}
+  heartPrefab: {fileID: 2606774521845603192, guid: 888bc26ea73feae4d8d6ff54ac601231, type: 3}
   initialCount: 30
 --- !u!114 &431693439
 MonoBehaviour:
