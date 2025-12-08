@@ -10,6 +10,7 @@ public class B_GameManager : MonoBehaviour
     public float maxGameTime = 15f;
     public bool  isBoss = false;
     public bool  isLive = true;
+    public bool  isClear = false;
     public int   character = 0;
     public int   score = 0;
 

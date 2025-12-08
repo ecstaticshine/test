@@ -11064,9 +11064,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B_GameManager
   gameTime: 0
-  maxGameTime: 60
+  maxGameTime: 30
   isBoss: 0
   isLive: 1
+  isClear: 0
   character: 0
   score: 0
   Score_Text: {fileID: 1836144576}
@@ -19831,7 +19832,7 @@ MonoBehaviour:
   heartUI: {fileID: 4113765442026208561}
   invincibleTime: 2
   blinkSpeed: 0.1
-  maxHealth: 5
+  maxHealth: 3
 --- !u!137 &546478161117617074
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

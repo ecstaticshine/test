@@ -25,6 +25,8 @@ public class B_Move : MonoBehaviour
 
     private void Update()
     {
+        
+
         Vector3 targetPosition = new Vector3(lanes[currentLane].position.x, transform.position.y, transform.position.z);
 
         transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
@@ -37,6 +39,8 @@ public class B_Move : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
+        if (B_GameManager.instance.isClear || !B_GameManager.instance.isLive) return;
+
         float input = value.Get<float>();
 
         if (input > 0)
@@ -53,6 +57,8 @@ public class B_Move : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
+        if (B_GameManager.instance.isClear || !B_GameManager.instance.isLive) return;
+
         if (value.isPressed && !isJumping)
         {
             playerAnimator.SetBool("IsJump", true);
