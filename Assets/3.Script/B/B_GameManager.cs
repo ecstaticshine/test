@@ -33,6 +33,7 @@ public class B_GameManager : MonoBehaviour
     public int coinScore = 100;      // 코인 점수
     public int healToScore = 500;    // 회복템 -> 점수 변환 시 점수
 
+    [SerializeField] private GameObject GameOver;
     public bool canGameOverInput = false;
 
     private void Awake()
@@ -41,6 +42,7 @@ public class B_GameManager : MonoBehaviour
         else Destroy(gameObject);
 
         Time.timeScale = 1;
+        GameOver.SetActive(false);
     }
 
     private void Start()
@@ -90,6 +92,7 @@ public class B_GameManager : MonoBehaviour
         if (!isLive || isClear)
         {
             StartCoroutine(GameOverDelay());
+            GameOver.SetActive(true);
 
             // 사용자가 아무 키나 누르면
             if (canGameOverInput && Input.anyKeyDown)

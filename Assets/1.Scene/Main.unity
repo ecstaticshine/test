@@ -11930,6 +11930,7 @@ MonoBehaviour:
   coinScore: 200
   healToScore: 500
   GameOver: {fileID: 1901219305}
+  canGameOverInput: 0
 --- !u!114 &2014038255
 MonoBehaviour:
   m_ObjectHideFlags: 0
