@@ -152,4 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
   type: 0
-  speed: 10
+  rotateSpeed: 100
+  scrollSpeed: 20
+  player: {fileID: 4035110697888950495, guid: b7e5ed1387ab647419d4873621748a6b, type: 3}

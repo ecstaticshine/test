@@ -5,74 +5,50 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    [Header("코인 프리팹 & 코인 갯수")]
-    [SerializeField] private GameObject coinPrefab;
-    [SerializeField] private int coinMaxCount = 10;
 
     [SerializeField] private GameObject plane1;
     [SerializeField] private GameObject plane2;
 
-    [SerializeField] private GameObject heartPrefab;
 
-    List<GameObject> itemList = new List<GameObject>();
-
-
-    public void Awake()
+    void Start()
     {
-        Setup();
-    }
-
-    public Vector3 setRandomPosition()
-    {
-        System.Random rnd = new System.Random();
-        int random = rnd.Next() % 3;
-        int[] PosX = { -2, 0, 2 };
-        
-        Vector3 position = new Vector3(PosX[random], 1, UnityEngine.Random.Range(5,30));
-
-        return position;
-    }
-
-    public void Setup()
-    {
-        for (int i = 0; i < coinMaxCount; i++)
+        // 처음부터 여러 줄을 깔고 싶으면 여기에 spawn 반복
+        for (int i = 0; i < 50; i++)
         {
-            Vector3 spawnPos = setRandomPosition();
-            GameObject coin = Instantiate(coinPrefab, spawnPos, Quaternion.identity);
-            coin.transform.SetParent(GetBackPlane());
-            itemList.Add(coin);
+            SpawnCoinLine(15);
         }
-        Vector3 heartPos = setRandomPosition();
-        GameObject heart = Instantiate(heartPrefab, heartPos, Quaternion.identity);
-        heart.transform.SetParent(GetBackPlane());
-        itemList.Add(heart);
-
     }
 
-    public void RequestRespawn(GameObject item)
+    public void SpawnCoinLine(int count)
     {
-        StartCoroutine(RespawnCoroutine(item));
-    }
+        int[] lanes = { -2, 0, 2 };
 
-    IEnumerator RespawnCoroutine(GameObject item)
-    {
-        yield return new WaitForSeconds(10f);
+        for (int i = 0; i < count; i++)
+        {
+            GameObject coin = ItemPool.Instance.GetCoin();
 
-        // plane 랜덤 재배정
-        item.transform.SetParent(GetBackPlane(), true);
+            // 뒤쪽 plane 기준으로 생성
+            Transform backPlane = GetBackPlane();
 
-        // 위치 재배정
-        item.transform.position = setRandomPosition();
+            float zBack = Mathf.Max(plane1.transform.position.z, plane2.transform.position.z)/2;
+            float spawnZ = zBack + i * 2f;
 
-        // 다시 활성화
-        item.SetActive(true);
+            int laneIndex = UnityEngine.Random.Range(0, 3);
+
+            coin.transform.SetParent(backPlane, true);
+            coin.transform.position = new Vector3(lanes[laneIndex], 1, spawnZ);
+        }
     }
 
     public Transform GetBackPlane()
     {
-        // Z가 더 큰 plane이 화면 뒤쪽에 있다고 가정
-        return plane1.transform.position.z > plane2.transform.position.z
-            ? plane1.transform
-            : plane2.transform;
+        return plane1.transform.position.z > plane2.transform.position.z ?
+            plane1.transform : plane2.transform;
+    }
+
+    public void RespawnCoin(GameObject coin)
+    {
+        ItemPool.Instance.ReturnCoin(coin);
+        SpawnCoinLine(1); // 하나 사라지면 하나 새로 스폰
     }
 }

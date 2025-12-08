@@ -4294,7 +4294,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 462a2e203ea4db0488447c0c5e6320ed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11012,6 +11012,7 @@ MonoBehaviour:
   maxHealth: 3
   coinScore: 100
   healToScore: 500
+  Score_Text: {fileID: 0}
 --- !u!23 &2014264048
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12090,6 +12091,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2123876127}
   - component: {fileID: 2123876126}
+  - component: {fileID: 2123876128}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -12107,7 +12109,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -12177,6 +12179,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &2123876128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123876125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c001e74b0456d4a9301f5e99a52adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeSky
+  StageTime: 5
+  changeTime: 3
+  DayLightSetting:
+    lightColor: {r: 1, g: 1, b: 1, a: 0}
+    lightIntensity: 1
+  NightLightSetting:
+    lightColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0}
+    lightIntensity: 1
 --- !u!23 &2143333110
 MeshRenderer:
   m_ObjectHideFlags: 0

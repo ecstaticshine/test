@@ -17,11 +17,16 @@ public class GameManager : MonoBehaviour
     public int coinScore = 100;      // 코인 점수
     public int healToScore = 500;    // 회복템 -> 점수 변환 시 점수
 
-    [SerializeField] private TMP_Text ScoreText;
+    public TMP_Text Score_Text;
 
     void Awake()
     {
         if (Instance == null) Instance = this;
+    }
+
+    private void Update()
+    {
+        Score_Text.text = string.Format("SCORE : {0:D6}", score);
     }
 
     // 코인 획득 시 호출
@@ -63,10 +68,5 @@ public class GameManager : MonoBehaviour
             Debug.Log("게임 오버");
             // 여기서 게임 오버 UI 띄우기
         }
-    }
-
-    private void Update()
-    {
-        ScoreText.text = string.Format("SCORE : {0:D6}",score);
     }
 }
