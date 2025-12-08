@@ -1863,9 +1863,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  gravityScale: 2
+  gravityScale: 3
   moveSpeed: 10
-  jumpPower: 10
+  jumpPower: 12
 --- !u!114 &6935483285539541839
 MonoBehaviour:
   m_ObjectHideFlags: 0
