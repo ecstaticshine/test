@@ -25,8 +25,6 @@ public class B_Move : MonoBehaviour
 
     private void Update()
     {
-        
-
         Vector3 targetPosition = new Vector3(lanes[currentLane].position.x, transform.position.y, transform.position.z);
 
         transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);

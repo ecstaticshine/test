@@ -11,7 +11,7 @@ public class B_Player : MonoBehaviour
     [SerializeField] private Color[] originalColors;
     private Animator playerAni;
     private bool isInvincible = false;
-    private bool isClear = false;
+    private bool isDie = false;
     private int currentHealth;
 
     private void Awake()
@@ -48,14 +48,14 @@ public class B_Player : MonoBehaviour
 
     private void Update()
     {
-        if (currentHealth <= 0 && !isClear)
+        if (currentHealth <= 0 && B_GameManager.instance.isLive)
         {
-            B_GameManager.instance.isClear = true;
-            isInvincible = true;
+            //B_GameManager.instance.isClear = true;
+            //playerAni.SetBool("IsWin", true);
+            //isClear = true;
+            //isInvincible = true;
 
-            playerAni.SetBool("IsWin", true);
-
-            isClear = true;
+            Die();
         }
     }
 

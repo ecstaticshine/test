@@ -10,8 +10,16 @@ public class ScoreUpdater : MonoBehaviour
 
     public void OnConfirmButton()
     {
-        string playerName = nameInput.text;
-        Debug.Log("입력한 이름: " + playerName);
+        string playerName; 
+
+        if (nameInput.text.Length > 3)
+        {
+            playerName = nameInput.text.Substring(0, 3);
+        }
+        else
+        {
+            playerName = nameInput.text;
+        }
 
         // 예: 랭킹 저장
         ScoreManager.instance.UpdateScore(playerName, PlayerPrefs.GetInt("Score"));
