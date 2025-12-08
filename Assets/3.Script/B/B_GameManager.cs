@@ -7,21 +7,23 @@ using System.Collections;
 public class B_GameManager : MonoBehaviour
 {
     public static B_GameManager instance = null;
+
+    [SerializeField] private GameObject Unity;
+    [SerializeField] private GameObject Urara;
+    [SerializeField] private GameObject Box;
+    public TMP_Text Score_Text;
+    public B_Player player;
     public float gameTime = 0f;
-    //public float maxGameTime = 15f;
-    //public bool  isBoss = false;
     public bool isLive = true;
     public bool isClear = false;
     public int character = 0;
     public int score = 0;
+    //public float maxGameTime = 15f;
+    //public bool  isBoss = false;
 
     private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
     private float scoreBuffer = 0f;
     private float scorePerSecond = 1000f;
-
-    public TMP_Text Score_Text;
-
-    public B_Player player;
 
     [Header("아이템 설정")]
     public int coinScore = 100;      // 코인 점수
@@ -37,6 +39,21 @@ public class B_GameManager : MonoBehaviour
 
     private void Start()
     {
+        character = PlayerPrefs.GetInt("SelectedCharacter");
+
+        switch (character)
+        {
+            case 0:
+                SetUpCharacter(Unity);
+                break;
+            case 1:
+                SetUpCharacter(Urara);
+                break;
+            case 2:
+                SetUpCharacter(Box);
+                Time.timeScale = 2;
+                break;
+        }
         //초기화
         /*
          * 
@@ -47,6 +64,11 @@ public class B_GameManager : MonoBehaviour
          * playerHealth = player.maxhealth;?
          * 
          */
+    }
+
+    private void SetUpCharacter(GameObject name)
+    {
+        name.SetActive(true);
     }
 
     private void Update()
@@ -99,6 +121,8 @@ public class B_GameManager : MonoBehaviour
 
     public void GameStart(int characterNum)
     {
+        character = characterNum;
+
         SceneManager.LoadScene("Main");
     }
 

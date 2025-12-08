@@ -152,4 +152,14 @@ public class B_Player : MonoBehaviour
         playerAni.SetTrigger("IsLose");
     }
 
+    // 추가 예정
+    private void Urararara()
+    {
+        if (B_GameManager.instance.character != 2) return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isInvincible = true;
+        }
+    }
 }

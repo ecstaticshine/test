@@ -264,6 +264,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6612233162664670443, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
+      propertyPath: heartUI
+      value: 
+      objectReference: {fileID: 4113765442026208561}
     - target: {fileID: 8226079107588330696, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
       propertyPath: lanes.Array.size
       value: 3
@@ -297,6 +301,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
+--- !u!1 &30870795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5543706751412192253, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
+  m_PrefabInstance: {fileID: 30870794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &67126889
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2195,8 +2204,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2055478873}
   - {fileID: 2014038253}
+  - {fileID: 2055478873}
   - {fileID: 585304532}
   - {fileID: 1174782678}
   - {fileID: 1043132606}
@@ -6588,7 +6597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1721553631591812921, guid: 0e02575cd260b544190413c54a21f428, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5567595726358054879, guid: 0e02575cd260b544190413c54a21f428, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6630,6 +6639,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6935483285539541839, guid: 0e02575cd260b544190413c54a21f428, type: 3}
+      propertyPath: heartUI
+      value: 
+      objectReference: {fileID: 4113765442026208561}
     - target: {fileID: 8009342834589539460, guid: 0e02575cd260b544190413c54a21f428, type: 3}
       propertyPath: lanes.Array.size
       value: 3
@@ -6651,6 +6664,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e02575cd260b544190413c54a21f428, type: 3}
+--- !u!1 &1261835631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1721553631591812921, guid: 0e02575cd260b544190413c54a21f428, type: 3}
+  m_PrefabInstance: {fileID: 1261835630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1264201849
 Transform:
   m_ObjectHideFlags: 0
@@ -11276,13 +11294,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6249d28725dc736409c6248bae4e5dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B_GameManager
+  Unity: {fileID: 1261835631}
+  Urara: {fileID: 30870795}
+  Box: {fileID: 1119039957488197061}
+  Score_Text: {fileID: 1836144576}
+  player: {fileID: 0}
   gameTime: 0
   isLive: 1
   isClear: 0
   character: 0
   score: 0
-  Score_Text: {fileID: 1836144576}
-  player: {fileID: 0}
   coinScore: 200
   healToScore: 500
 --- !u!114 &2014038255
@@ -13356,6 +13377,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3604588140508828596, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
+      propertyPath: heartUI
+      value: 
+      objectReference: {fileID: 4113765442026208561}
     - target: {fileID: 5892867517891587912, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13400,11 +13425,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoxUnityChan
       objectReference: {fileID: 0}
+    - target: {fileID: 7564179436916807957, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
+      propertyPath: lanes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564179436916807957, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
+      propertyPath: 'lanes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1841127299}
+    - target: {fileID: 7564179436916807957, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
+      propertyPath: 'lanes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 802386202}
+    - target: {fileID: 7564179436916807957, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
+      propertyPath: 'lanes.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1075968515}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
+--- !u!1 &1119039957488197061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7292788158129102758, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
+  m_PrefabInstance: {fileID: 1119039957488197060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!205 &1256791195546485115
 LODGroup:
   m_ObjectHideFlags: 0
@@ -25599,7 +25645,7 @@ SceneRoots:
   - {fileID: 1102180647}
   - {fileID: 760135615}
   - {fileID: 1261835630}
-  - {fileID: 1119039957488197060}
   - {fileID: 30870794}
+  - {fileID: 1119039957488197060}
   - {fileID: 726187531}
   - {fileID: 1821065360}
