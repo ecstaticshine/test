@@ -67,7 +67,10 @@ public class B_Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        OnDamaged(1);
+        if (other.CompareTag("Obstacle"))
+        {
+            OnDamaged(1);
+        }
     }
 
     private void Die()
