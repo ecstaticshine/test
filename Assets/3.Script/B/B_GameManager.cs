@@ -11,11 +11,14 @@ public class B_GameManager : MonoBehaviour
     [SerializeField] private GameObject Unity;
     [SerializeField] private GameObject Urara;
     [SerializeField] private GameObject Box;
+    [SerializeField] private GameObject pause;
     public TMP_Text Score_Text;
     public B_Player player;
+    public B_Move move;
     public float gameTime = 0f;
     public bool isLive = true;
     public bool isClear = false;
+    public bool isStop = false;
     public int character = 0;
     public int score = 0;
     //public float maxGameTime = 15f;
@@ -51,7 +54,7 @@ public class B_GameManager : MonoBehaviour
                 break;
             case 2:
                 SetUpCharacter(Box);
-                Time.timeScale = 2;
+                Time.timeScale = 1.5f;
                 break;
         }
         //√ ±‚»≠
@@ -66,13 +69,18 @@ public class B_GameManager : MonoBehaviour
          */
     }
 
-    private void SetUpCharacter(GameObject name)
-    {
-        name.SetActive(true);
-    }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) && !isStop)
+        {
+            Stop();
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && isStop)
+        {
+            Resume();
+        }
+
         if (!isLive || isClear)
         {
             wait_Co();
@@ -118,6 +126,13 @@ public class B_GameManager : MonoBehaviour
         yield return new WaitForSeconds(5f);
     }
 
+    private void SetUpCharacter(GameObject characterObject)
+    {
+        characterObject.SetActive(true);
+
+        move = characterObject.GetComponent<B_Move>();
+        player = characterObject.GetComponent<B_Player>();
+    }
 
     public void GameStart(int characterNum)
     {
@@ -128,11 +143,23 @@ public class B_GameManager : MonoBehaviour
 
     public void Stop()
     {
+        pause.SetActive(true);
+
+        move.enabled = false;
+
+        isStop = true;
+
         Time.timeScale = 0;
     }
 
     public void Resume()
     {
+        pause.SetActive(false);
+
+        move.enabled = true;
+
+        isStop = false;
+
         Time.timeScale = 1;
     }
 

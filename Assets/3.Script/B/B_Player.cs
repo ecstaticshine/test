@@ -12,6 +12,8 @@ public class B_Player : MonoBehaviour
     private Animator playerAni;
     private bool isInvincible = false;
     private bool isDie = false;
+    private bool isrealDie = false;
+    private bool isUseSkill = false;
     private int currentHealth;
 
     private void Awake()
@@ -48,14 +50,11 @@ public class B_Player : MonoBehaviour
 
     private void Update()
     {
-        if (currentHealth <= 0 && B_GameManager.instance.isLive)
+        if (Input.GetKeyDown(KeyCode.R) && !isUseSkill)
         {
-            //B_GameManager.instance.isClear = true;
-            //playerAni.SetBool("IsWin", true);
-            //isClear = true;
-            //isInvincible = true;
+            isUseSkill = true;
 
-            Die();
+            StartCoroutine(Urararara_co());
         }
     }
 
@@ -64,12 +63,24 @@ public class B_Player : MonoBehaviour
         if (isInvincible || currentHealth <= 0) return;
 
         currentHealth -= damage;
-
         heartUI.UpdateHearts(currentHealth);
 
         if (currentHealth <= 0)
         {
-            Die();
+            if (B_GameManager.instance.character == 0 && !isrealDie)
+            {
+                currentHealth = maxHealth;
+
+                isrealDie = true;
+
+                if (heartUI != null) heartUI.UpdateHearts(currentHealth);
+
+                StartCoroutine(OnDamaged_co());
+            }
+            else
+            {
+                Die();
+            }
         }
         else
         {
@@ -152,14 +163,24 @@ public class B_Player : MonoBehaviour
         playerAni.SetTrigger("IsLose");
     }
 
-    // 추가 예정
-    private void Urararara()
+    private IEnumerator Urararara_co()
     {
-        if (B_GameManager.instance.character != 2) return;
+        if (B_GameManager.instance.character != 1) yield break;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        isInvincible = true;
+        Time.timeScale = 3f;
+
+        float timer = 0f;
+        float duration = 5f;
+
+        while (timer < duration)
         {
-            isInvincible = true;
+            timer += Time.unscaledDeltaTime;
+
+            yield return null;
         }
+
+        isInvincible = false;
+        Time.timeScale = 1f;
     }
 }
