@@ -2907,7 +2907,7 @@ MonoBehaviour:
   heartUI: {fileID: 0}
   invincibleTime: 2
   blinkSpeed: 0.1
-  maxHealth: 3
+  maxHealth: 5
   playerMRs: []
   originalColors: []
 --- !u!1 &5782058714923597102
