@@ -464,3 +464,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp,unity
+Assets/Forest/SimpleNaturePack_2020.3_HDRP_v1.24.unitypackage.meta
+Assets/Forest/SimpleNaturePack_2020.3_URP_v1.24.unitypackage.meta
