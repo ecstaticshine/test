@@ -13,7 +13,7 @@ public class Item : MonoBehaviour
 
     private ItemSpawner spawner;
 
-    public float maxLifetime = 30f;
+    public float maxLifetime = 15f;
     private float lifetime = 0f;
 
     void Start()
@@ -41,12 +41,12 @@ public class Item : MonoBehaviour
         {
             if (type == ItemType.Coin)
             {
-                GameManager.Instance.GetCoin();
+                B_GameManager.instance.GetCoin();
                 Despawn();
             }
             else if (type == ItemType.Heal)
             {
-                GameManager.Instance.GetHealItem();
+                B_GameManager.instance.GetHealItem();
                 Despawn();
             }
             
@@ -56,5 +56,6 @@ public class Item : MonoBehaviour
     void Despawn()
     {
         spawner.RespawnCoin(gameObject);
+        gameObject.SetActive(false);
     }
 }

@@ -30,7 +30,7 @@ public class ItemSpawner : MonoBehaviour
             // 第率 plane 扁霖栏肺 积己
             Transform backPlane = GetBackPlane();
 
-            float zBack = Mathf.Max(plane1.transform.position.z, plane2.transform.position.z)/2;
+            float zBack = Mathf.Max(plane1.transform.position.z, plane2.transform.position.z)/4;
             float spawnZ = zBack + i * 2f;
 
             int laneIndex = UnityEngine.Random.Range(0, 3);
