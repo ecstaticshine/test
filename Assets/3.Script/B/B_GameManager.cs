@@ -92,7 +92,6 @@ public class B_GameManager : MonoBehaviour
         if (!isLive || isClear)
         {
             StartCoroutine(GameOverDelay());
-            GameOver.SetActive(true);
 
             // 사용자가 아무 키나 누르면
             if (canGameOverInput && Input.anyKeyDown)
@@ -132,6 +131,9 @@ public class B_GameManager : MonoBehaviour
 
     public IEnumerator GameOverDelay()
     {
+        yield return new WaitForSeconds(5f);
+        GameOver.SetActive(true);
+
         yield return new WaitForSeconds(5f);
         canGameOverInput = true;
     }
