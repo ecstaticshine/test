@@ -21,6 +21,7 @@ public class B_GameManager : MonoBehaviour
     public bool isStop = false;
     public int character = 0;
     public int score = 0;
+    private int scoreMultipler = 1;
     //public float maxGameTime = 15f;
     //public bool  isBoss = false;
 
@@ -44,6 +45,8 @@ public class B_GameManager : MonoBehaviour
     {
         character = PlayerPrefs.GetInt("SelectedCharacter");
 
+        scoreMultipler = 1;
+
         switch (character)
         {
             case 0:
@@ -55,6 +58,7 @@ public class B_GameManager : MonoBehaviour
             case 2:
                 SetUpCharacter(Box);
                 Time.timeScale = 1.5f;
+                scoreMultipler = 2;
                 break;
         }
         //초기화
@@ -108,7 +112,7 @@ public class B_GameManager : MonoBehaviour
         {
             gameTime += Time.deltaTime;
 
-            scoreBuffer += Mathf.RoundToInt(scorePerSecond * Time.deltaTime);
+            scoreBuffer += Mathf.RoundToInt(scorePerSecond * scoreMultipler *Time.deltaTime);
 
             if (scoreBuffer >= scorePerSecond)
             {
@@ -171,7 +175,7 @@ public class B_GameManager : MonoBehaviour
     // 코인 획득 시 호출
     public void GetCoin()
     {
-        score += coinScore;
+        score += (coinScore * scoreMultipler);
         Debug.Log("코인 획득! 현재 점수: " + score);
 
         // 효과음 재생 (아까 만든 오디오 매니저 활용)
@@ -184,7 +188,7 @@ public class B_GameManager : MonoBehaviour
         // 핵심 기획: 피가 꽉 찼으면 점수로!
         if (player.getCurrentHealth() >= player.getMaxHealth())
         {
-            score += healToScore;
+            score += (healToScore * scoreMultipler);
             Debug.Log("체력 Full! 점수로 변환: " + score);
             AudioManager.Instance.PlaySFX("Coin"); // 돈 버는 소리
         }
