@@ -12,10 +12,19 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int currentHealth = 3;
     public int maxHealth = 3;
+    public int displayScore = 0;  // 실제 표시되는 정수 점수
+    public float rawScore = 0f;   // 시간 계산용 소수점 점수
 
     [Header("아이템 설정")]
     public int coinScore = 100;      // 코인 점수
     public int healToScore = 500;    // 회복템 -> 점수 변환 시 점수
+
+    [Header("UI 연결")]
+    public GameObject resultPanel;    // 아까 만든 패널 연결
+    public TextMeshProUGUI finalScoreText; // 점수 텍스트 연결
+    public bool isGameOver;
+
+   
 
     public TMP_Text Score_Text;
 
@@ -69,4 +78,24 @@ public class GameManager : MonoBehaviour
             // 여기서 게임 오버 UI 띄우기
         }
     }
+    public void GameOver()
+    {
+        if (isGameOver) return;
+        isGameOver = true;
+
+        Debug.Log("게임 오버!");
+
+        // 사운드 처리
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopBGM();
+            AudioManager.Instance.PlaySFX("GameOver");
+        }
+
+        // SceneLoader에게 씬 이동 요청 (현재 점수 전달)
+        // 싱글톤이라 바로 부를 수 있음!
+        SceneLoader.Instance.LoadResultScene(displayScore);
+    }
 }
+
+
