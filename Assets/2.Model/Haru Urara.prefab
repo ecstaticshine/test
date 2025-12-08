@@ -2644,6 +2644,7 @@ GameObject:
   - component: {fileID: 7609487466351159164}
   - component: {fileID: 8226079107588330696}
   - component: {fileID: 7283927631950389327}
+  - component: {fileID: 6612233162664670443}
   m_Layer: 0
   m_Name: Haru Urara
   m_TagString: Untagged
@@ -2860,7 +2861,7 @@ MonoBehaviour:
   - {fileID: 0}
   gravityScale: 2
   moveSpeed: 10
-  jumpPower: 5
+  jumpPower: 10
 --- !u!114 &7283927631950389327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2891,6 +2892,24 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6612233162664670443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5543706751412192253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64eacddbcb1ef5e49a77f0bfadfcd7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::B_Player
+  heartUI: {fileID: 0}
+  invincibleTime: 2
+  blinkSpeed: 0.1
+  maxHealth: 3
+  playerMRs: []
+  originalColors: []
 --- !u!1 &5782058714923597102
 GameObject:
   m_ObjectHideFlags: 0
