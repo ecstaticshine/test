@@ -268,6 +268,18 @@ PrefabInstance:
       propertyPath: heartUI
       value: 
       objectReference: {fileID: 4113765442026208561}
+    - target: {fileID: 6612233162664670443, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226079107588330696, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
+      propertyPath: jumpPower
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226079107588330696, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
+      propertyPath: gravityScale
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8226079107588330696, guid: 9f0ba77ed6745b543b95ee7991208810, type: 3}
       propertyPath: 'lanes.Array.data[0]'
       value: 
@@ -2575,8 +2587,8 @@ MonoBehaviour:
   - {fileID: 802386202}
   - {fileID: 1075968515}
   spawnY: 1
-  itemInterval: 1.5
-  jumpArcHeight: 3.5
+  itemInterval: 4
+  jumpArcHeight: 1.5
   jumpDistance: 12
 --- !u!23 &436720242
 MeshRenderer:
@@ -6931,6 +6943,18 @@ PrefabInstance:
       propertyPath: heartUI
       value: 
       objectReference: {fileID: 4113765442026208561}
+    - target: {fileID: 6935483285539541839, guid: 0e02575cd260b544190413c54a21f428, type: 3}
+      propertyPath: isInvincible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8009342834589539460, guid: 0e02575cd260b544190413c54a21f428, type: 3}
+      propertyPath: jumpPower
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8009342834589539460, guid: 0e02575cd260b544190413c54a21f428, type: 3}
+      propertyPath: gravityScale
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8009342834589539460, guid: 0e02575cd260b544190413c54a21f428, type: 3}
       propertyPath: 'lanes.Array.data[0]'
       value: 
@@ -9011,8 +9035,9 @@ MonoBehaviour:
   - {fileID: 631815037293422509, guid: 66dee572e6303f34f914e2a50f44df67, type: 3}
   - {fileID: 9146305905338276383, guid: 98827f9003663e341a9e5cc76abc2e6a, type: 3}
   - {fileID: 6305785080465449260, guid: 0cba0abd4489aa140a892d902144496a, type: 3}
-  minDistance: 30
-  maxDistance: 50
+  minDistance: 25
+  maxDistance: 35
+  bigObstacleY: 0.5
   straightCoinOffset: 5
   jumpCoinOffset: 6
 --- !u!4 &1583893391
@@ -11669,8 +11694,8 @@ MonoBehaviour:
   isStop: 0
   character: 0
   score: 0
-  minGameSpeed: 10
-  maxGameSpeed: 30
+  minGameSpeed: 20
+  maxGameSpeed: 60
   difficultyReachTime: 60
   coinScore: 200
   healToScore: 500
@@ -13751,6 +13776,10 @@ PrefabInstance:
       propertyPath: heartUI
       value: 
       objectReference: {fileID: 4113765442026208561}
+    - target: {fileID: 3604588140508828596, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5892867517891587912, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13794,6 +13823,10 @@ PrefabInstance:
     - target: {fileID: 7292788158129102758, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
       propertyPath: m_Name
       value: BoxUnityChan
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564179436916807957, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
+      propertyPath: jumpPower
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7564179436916807957, guid: 91528280dfdd01045b9e0f7f6a3e5693, type: 3}
       propertyPath: 'lanes.Array.data[0]'

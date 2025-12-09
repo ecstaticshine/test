@@ -10,7 +10,7 @@ public class B_Player : MonoBehaviour
     [SerializeField] private SkinnedMeshRenderer[] playerMRs;
     [SerializeField] private Color[] originalColors;
     private Animator playerAni;
-    private bool isInvincible = false;
+    public bool isInvincible = false;
     private bool isDie = false;
     private bool isrealDie = false;
     private bool isUseSkill = false;
