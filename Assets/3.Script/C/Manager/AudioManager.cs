@@ -27,6 +27,8 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject); // 중복 생성 방지
         }
+
+        bgmPlayer.volume = 0.6f;
     }
 
     // --- BGM 관련 메서드 ---

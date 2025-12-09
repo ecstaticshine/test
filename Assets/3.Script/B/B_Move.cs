@@ -62,6 +62,8 @@ public class B_Move : MonoBehaviour
         {
             playerAnimator.SetBool("IsJump", true);
 
+            AudioManager.Instance.PlaySFX("Jump");
+
             isJumping = true;
 
             playerRigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);

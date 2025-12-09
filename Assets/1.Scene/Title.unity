@@ -622,13 +622,12 @@ MonoBehaviour:
   bgmClips:
   - {fileID: 8300000, guid: 6a41b8c6f281f3648a56bfeb22fe5471, type: 3}
   sfxClips:
-  - {fileID: 8300000, guid: 21efabd069c7b0f4d8fa3d25ed04d8cf, type: 3}
-  - {fileID: 8300000, guid: 382d6a85dd07fa347b59103026daaa5c, type: 3}
+  - {fileID: 8300000, guid: b294d7f5ea7d4fa459d9c9750a7fda1c, type: 3}
   - {fileID: 8300000, guid: 1b46cfda612028b42be1c1e7f5db63c0, type: 3}
   - {fileID: 8300000, guid: 3a5a2abd8e7ec5a45a78edb43fc2f37f, type: 3}
   - {fileID: 8300000, guid: 7d42b08acd839e546ac1bf8fdb32c753, type: 3}
   - {fileID: 8300000, guid: e47724b5cfa9670478873377c6d06019, type: 3}
-  - {fileID: 8300000, guid: 78dfa7e84d21b4adab175b30eb01eacc, type: 3}
+  - {fileID: 8300000, guid: c7cc2f36f23b7144f9d43e917d065e50, type: 3}
 --- !u!4 &650102591
 Transform:
   m_ObjectHideFlags: 0
