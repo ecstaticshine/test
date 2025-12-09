@@ -35,6 +35,7 @@ public class B_GameManager : MonoBehaviour
 
     [SerializeField] private GameObject GameOver;
     public bool canGameOverInput = false;
+    private bool isGameOverRoutineStarted = false;
 
     private void Awake()
     {
@@ -47,6 +48,7 @@ public class B_GameManager : MonoBehaviour
 
     private void Start()
     {
+        isGameOverRoutineStarted = false;
         character = PlayerPrefs.GetInt("SelectedCharacter");
 
         scoreMultipler = 1;
@@ -91,7 +93,12 @@ public class B_GameManager : MonoBehaviour
 
         if (!isLive || isClear)
         {
-            StartCoroutine(GameOverDelay());
+
+            if (!isGameOverRoutineStarted)
+            {
+                isGameOverRoutineStarted = true;
+                StartCoroutine(GameOverDelay());
+            }
 
             // 사용자가 아무 키나 누르면
             if (canGameOverInput && Input.anyKeyDown)

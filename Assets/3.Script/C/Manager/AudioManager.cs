@@ -58,11 +58,20 @@ public class AudioManager : MonoBehaviour
     private IEnumerator PlaySFXPauseRoutine(string sfxName)
     {
         bgmPlayer.Pause();              // 1) BGM 잠깐 멈춤
-        PlaySFX(sfxName);               // 2) SFX 재생
+        AudioClip clip = Array.Find(sfxClips, x => x.name == sfxName);
 
-        yield return new WaitForSeconds(6f); // 3) SFX 끝날 때까지 기다림
+        if (clip == null)
+        {
+            Debug.LogWarning("SFX를 찾을 수 없습니다: " + sfxName);
+            yield break;
+        }
 
-        bgmPlayer.UnPause();            // 4) BGM 다시 재생
+        sfxPlayer.PlayOneShot(clip);   // 효과음 재생
+        yield return new WaitForSeconds(clip.length); // 효과음 길이만큼 기다림
+
+        bgmPlayer.UnPause();   // 다시 재생
+
+
     }
 
     // --- SFX (효과음) 관련 메서드 ---
