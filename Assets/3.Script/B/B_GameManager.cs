@@ -207,7 +207,7 @@ public class B_GameManager : MonoBehaviour
     public void GetCoin()
     {
         score += (coinScore * scoreMultipler);
-        Debug.Log("코인 획득! 현재 점수: " + score);
+        //Debug.Log("코인 획득! 현재 점수: " + score);
 
         // 효과음 재생 (아까 만든 오디오 매니저 활용)
         AudioManager.Instance.PlaySFX("Coin");

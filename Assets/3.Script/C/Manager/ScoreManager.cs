@@ -32,7 +32,7 @@ public class ScoreManager : MonoBehaviour
     {
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(SavePath, json);
-        Debug.Log($"저장 완료: {SavePath}");
+        //Debug.Log($"저장 완료: {SavePath}");
     }
 
     public SaveData Load()
