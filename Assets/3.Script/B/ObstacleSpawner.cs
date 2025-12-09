@@ -13,6 +13,7 @@ public class ObstacleSpawner : MonoBehaviour
     [Header("거리 기반 생성 설정")]
     [SerializeField] private float minDistance = 30f;
     [SerializeField] private float maxDistance = 50f;
+    [SerializeField] private float bigObstacleY = 0.5f;
 
     [Header("코인 위치 보정")]
     [SerializeField] private float straightCoinOffset = 5f;
@@ -97,9 +98,15 @@ public class ObstacleSpawner : MonoBehaviour
                 break;
 
             case 2: // [3칸 점프 장애물]
+                Vector3 spawnPos = new Vector3(
+                    lanePositions[1].position.x,
+                    bigObstacleY, // 여기가 핵심! 0.5f
+                    lanePositions[1].position.z + obstacleOffset_Z.z // 혹은 그냥 obstacleZ 써도 됨
+                );
+
                 spawnedObstacle = B_GameManager.instance.Get(
                     obstaclePrefabs[3],
-                    lanePositions[1].position - obstacleOffset_Y + obstacleOffset_Z,
+                    spawnPos,
                     Quaternion.identity
                 );
 
