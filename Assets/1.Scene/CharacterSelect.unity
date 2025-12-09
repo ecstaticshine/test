@@ -676,7 +676,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 171de7ac81be78049848f3f93a6dbae7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -716,8 +716,8 @@ Transform:
   m_GameObject: {fileID: 1516038635}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7.5}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalPosition: {x: 0, y: 2.54, z: -7.5}
+  m_LocalScale: {x: 5.5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1083,7 +1083,7 @@ MonoBehaviour:
   - {fileID: 1712741294}
   moveDistance: 1500
   moveSpeed: 0.5
-  waitTime: 0.5
+  waitTime: 2
 --- !u!4 &2040063869
 Transform:
   m_ObjectHideFlags: 0
@@ -1281,6 +1281,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5543706752686091386}
+        m_TargetAssemblyTypeName: AnimationRandom, Assembly-CSharp
+        m_MethodName: PlayRandomCharacterAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5902,6 +5914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3982138205303193681}
   - component: {fileID: 2039270144004072127}
+  - component: {fileID: 5543706752686091386}
   m_Layer: 0
   m_Name: Haru Urara
   m_TagString: Untagged
@@ -5909,6 +5922,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5543706752686091386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5543706752686091385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50570dee4236c1b40856e62b2198b0a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationRandom
+  AnimationName:
+  - Breakdance 1990
+  - SittingPose
+  - CongCOng
+  - SnakeDance
+  - NormalPose
+  - Punch
 --- !u!4 &5591434885647437500
 Transform:
   m_ObjectHideFlags: 0
