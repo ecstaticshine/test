@@ -217,27 +217,20 @@ public class B_GameManager : MonoBehaviour
     public void GetCoin()
     {
         score += (coinScore * scoreMultipler);
-        //Debug.Log("코인 획득! 현재 점수: " + score);
-
-        // 효과음 재생 (아까 만든 오디오 매니저 활용)
         AudioManager.Instance.PlaySFX("Coin");
     }
 
-    // 회복 아이템 획득 시 호출
     public void GetHealItem()
     {
-        // 핵심 기획: 피가 꽉 찼으면 점수로!
         if (player.getCurrentHealth() >= player.getMaxHealth())
         {
             score += (healToScore * scoreMultipler);
-            //Debug.Log("체력 Full! 점수로 변환: " + score);
-            AudioManager.Instance.PlaySFX("Coin"); // 돈 버는 소리
+            AudioManager.Instance.PlaySFX("Coin");
         }
         else
         {
             player.healHealth();
-            //Debug.Log("체력 회복! 현재 체력: " + player.getCurrentHealth());
-            AudioManager.Instance.PlaySFX("Heal"); // 회복 소리
+            AudioManager.Instance.PlaySFX("Heal");
 
             OnHealthChanged?.Invoke(player.getCurrentHealth());
         }

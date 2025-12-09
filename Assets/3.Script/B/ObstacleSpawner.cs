@@ -100,8 +100,8 @@ public class ObstacleSpawner : MonoBehaviour
             case 2: // [3칸 점프 장애물]
                 Vector3 spawnPos = new Vector3(
                     lanePositions[1].position.x,
-                    bigObstacleY, // 여기가 핵심! 0.5f
-                    lanePositions[1].position.z + obstacleOffset_Z.z // 혹은 그냥 obstacleZ 써도 됨
+                    bigObstacleY,
+                    lanePositions[1].position.z + obstacleOffset_Z.z
                 );
 
                 spawnedObstacle = B_GameManager.instance.Get(
