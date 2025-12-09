@@ -153,6 +153,7 @@ public class B_Player : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             OnDamaged(1);
+            AudioManager.Instance.PlaySFX("Hurt");
         }
     }
 
