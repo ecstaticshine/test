@@ -80,13 +80,27 @@ public class Scroll : MonoBehaviour
 
     public Transform GetFloorAtPosition(float worldZ)
     {
+        Transform bestFloor = null;
+        float minDistance = float.MaxValue;
+
         foreach (Transform floor in floors)
         {
-            if (Mathf.Abs(floor.position.z - worldZ) < floorSize / 2)
+            float dist = Mathf.Abs(floor.position.z - worldZ);
+
+            if (dist < minDistance)
             {
-                return floor;
+                minDistance = dist;
+                bestFloor = floor;
             }
         }
-        return floors[0];
+
+        if (bestFloor == null) return floors[0];
+
+        if (bestFloor.position.z < -floorSize / 2)
+        {
+            return null;
+        }
+
+        return bestFloor;
     }
 }

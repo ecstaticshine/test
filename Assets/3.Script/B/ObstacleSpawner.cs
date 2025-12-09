@@ -128,10 +128,19 @@ public class ObstacleSpawner : MonoBehaviour
         if (obstacle != null && Scroll.Instance != null)
         {
             Transform floor = Scroll.Instance.GetFloorAtPosition(zPos);
-            obstacle.transform.SetParent(floor, true);
 
-            var moveScript = obstacle.GetComponent<ObstacleMovement>();
-            if (moveScript != null) moveScript.enabled = false;
+            if (floor != null)
+            {
+                obstacle.transform.SetParent(floor, true);
+
+                var moveScript = obstacle.GetComponent<ObstacleMovement>();
+                if (moveScript != null) moveScript.enabled = false;
+            }
+            else
+            {
+                var moveScript = obstacle.GetComponent<ObstacleMovement>();
+                if (moveScript != null) moveScript.enabled = true;
+            }
         }
     }
 
