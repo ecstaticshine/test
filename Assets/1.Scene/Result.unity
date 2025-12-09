@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB3CC\uC544\uAC00\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 597f7a0c5b227674aa4d4e14ed220b77, type: 2}
-  m_sharedMaterial: {fileID: 8404452215559538194, guid: 597f7a0c5b227674aa4d4e14ed220b77, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba02cfdd3198a4c4abb46894de232753, type: 2}
+  m_sharedMaterial: {fileID: 4850827330068931996, guid: ba02cfdd3198a4c4abb46894de232753, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1003,8 +1003,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'HI-SCORE : 10000'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 597f7a0c5b227674aa4d4e14ed220b77, type: 2}
-  m_sharedMaterial: {fileID: 8404452215559538194, guid: 597f7a0c5b227674aa4d4e14ed220b77, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba02cfdd3198a4c4abb46894de232753, type: 2}
+  m_sharedMaterial: {fileID: 4850827330068931996, guid: ba02cfdd3198a4c4abb46894de232753, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -123.1875, y: 0, z: -134.04688, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
