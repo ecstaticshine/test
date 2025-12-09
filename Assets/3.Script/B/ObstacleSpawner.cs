@@ -23,7 +23,7 @@ public class ObstacleSpawner : MonoBehaviour
     private float targetDistToNextSpawn = 0f;
 
     private int rnd;
-    private Vector3 obstacleOffset_Z = new Vector3(0f, 0f, 45f);
+    private Vector3 obstacleOffset_Z = new Vector3(0f, 0f, 65f);
     private Vector3 obstacleOffset_Y = new Vector3(0f, 0.0f, 0f);
 
     private void Start()
