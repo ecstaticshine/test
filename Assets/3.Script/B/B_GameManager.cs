@@ -135,6 +135,8 @@ public class B_GameManager : MonoBehaviour
 
     public IEnumerator GameOverDelay()
     {
+        AudioManager.Instance.PlaySFX_PauseBGM("GameOver");
+
         yield return new WaitForSeconds(3f);
         GameOver.SetActive(true);
 

@@ -50,9 +50,19 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.Play();
     }
 
-    public void StopBGM()
+    public void PlaySFX_PauseBGM(string sfxName)
     {
-        bgmPlayer.Stop();
+        StartCoroutine(PlaySFXPauseRoutine(sfxName));
+    }
+
+    private IEnumerator PlaySFXPauseRoutine(string sfxName)
+    {
+        bgmPlayer.Pause();              // 1) BGM 잠깐 멈춤
+        PlaySFX(sfxName);               // 2) SFX 재생
+
+        yield return new WaitForSeconds(6f); // 3) SFX 끝날 때까지 기다림
+
+        bgmPlayer.UnPause();            // 4) BGM 다시 재생
     }
 
     // --- SFX (효과음) 관련 메서드 ---
