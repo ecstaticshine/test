@@ -8,6 +8,7 @@ public class ScoreUpdater : MonoBehaviour
 {
     public TMP_InputField nameInput;
 
+
     public void OnConfirmButton()
     {
         string playerName; 
@@ -26,4 +27,10 @@ public class ScoreUpdater : MonoBehaviour
 
         SceneLoader.Instance.LoadResultScene();
     }
+
+    private void Start()
+    {
+        AudioManager.Instance.PlaySFX_PauseBGM("Clap");   
+    }
+
 }
