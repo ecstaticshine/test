@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,7 @@ public class B_GameManager : MonoBehaviour
     //public float maxGameTime = 15f;
     //public bool  isBoss = false;
 
+    public event Action<int> OnHealthChanged;
     private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
     private float scoreBuffer = 0f;
     private float scorePerSecond = 1000f;
@@ -220,14 +222,16 @@ public class B_GameManager : MonoBehaviour
         if (player.getCurrentHealth() >= player.getMaxHealth())
         {
             score += (healToScore * scoreMultipler);
-            Debug.Log("체력 Full! 점수로 변환: " + score);
+            //Debug.Log("체력 Full! 점수로 변환: " + score);
             AudioManager.Instance.PlaySFX("Coin"); // 돈 버는 소리
         }
         else
         {
             player.healHealth();
-            Debug.Log("체력 회복! 현재 체력: " + player.getCurrentHealth());
+            //Debug.Log("체력 회복! 현재 체력: " + player.getCurrentHealth());
             AudioManager.Instance.PlaySFX("Heal"); // 회복 소리
+
+            OnHealthChanged?.Invoke(player.getCurrentHealth());
         }
     }
 

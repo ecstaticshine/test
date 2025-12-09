@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Benjathemaker;
 
 public class ItemSpawner : MonoBehaviour
 {
@@ -15,7 +16,42 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] private float jumpArcHeight = 3.5f;
     [SerializeField] private float jumpDistance = 12f;
 
+    [Header("힐 아이템 설정 (시간제)")]
+    [SerializeField] private float healSpawnInterval = 15f;
+    [SerializeField] private float healSpawnZOffset = 65f;
+    private float healTimer = 0f;
+
     private const int COIN_COUNT = 3;
+
+    private void Update()
+    {
+        if (!B_GameManager.instance.isLive || B_GameManager.instance.isClear) return;
+
+        healTimer += Time.deltaTime;
+
+        if (healTimer >= healSpawnInterval)
+        {
+            SpawnHealItem();
+            healTimer = 0f;
+        }
+    }
+
+    private void SpawnHealItem()
+    {
+        GameObject heart = ItemPool.Instance.GetHeart();
+
+        int randomLane = Random.Range(0, lanePosition.Length);
+
+        float spawnZ = lanePosition[0].position.z + healSpawnZOffset;
+
+        heart.transform.position = new Vector3(
+            lanePosition[randomLane].position.x,
+            spawnY,
+            spawnZ
+        );
+
+        AttachToFloor(heart, spawnZ);
+    }
 
     public void SpawnPattern(int safeLaneIndex, float startZ, bool isCurve = false)
     {

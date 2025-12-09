@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6581976092944805265}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,5 +153,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Item
   type: 0
   rotateSpeed: 100
-  scrollSpeed: 20
-  player: {fileID: 4035110697888950495, guid: b7e5ed1387ab647419d4873621748a6b, type: 3}
+  maxLifetime: 30

@@ -10,6 +10,22 @@ public class HeartUI : MonoBehaviour
 
     private List<Image> heartList = new List<Image>();
 
+    private void OnEnable()
+    {
+        if (B_GameManager.instance != null)
+        {
+            B_GameManager.instance.OnHealthChanged += UpdateHearts;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (B_GameManager.instance != null)
+        {
+            B_GameManager.instance.OnHealthChanged -= UpdateHearts;
+        }
+    }
+
     public void CreateHearts(int maxHealth)
     {
         foreach (Image heart in heartList)
