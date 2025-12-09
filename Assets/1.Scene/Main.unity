@@ -2556,7 +2556,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPool
   coinPrefab: {fileID: 1580344074915586814, guid: 5e08341e28cc2ec4c808e4c27229b24e, type: 3}
   heartPrefab: {fileID: 2606774521845603192, guid: 888bc26ea73feae4d8d6ff54ac601231, type: 3}
-  initialCount: 30
+  initialCoinCount: 50
+  initialHeartCount: 5
 --- !u!114 &431693439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2569,8 +2570,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f95fc1244a99d4da2c5ec0915bc34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemSpawner
-  plane1: {fileID: 1429388688}
-  plane2: {fileID: 647277364}
+  lanePosition:
+  - {fileID: 1841127299}
+  - {fileID: 802386202}
+  - {fileID: 1075968515}
+  spawnY: 1
+  itemInterval: 1.5
+  jumpArcHeight: 3.5
+  jumpDistance: 12
 --- !u!23 &436720242
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6318,7 +6325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JongO
   floors: []
-  scrollSpeed: 10
 --- !u!4 &1174782678
 Transform:
   m_ObjectHideFlags: 0
@@ -8992,6 +8998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4968a25679d1eb54ebbf93f8a30858fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawner
+  itemSpawner: {fileID: 431693439}
   lanePositions:
   - {fileID: 1841127299}
   - {fileID: 802386202}
@@ -9004,9 +9011,10 @@ MonoBehaviour:
   - {fileID: 631815037293422509, guid: 66dee572e6303f34f914e2a50f44df67, type: 3}
   - {fileID: 9146305905338276383, guid: 98827f9003663e341a9e5cc76abc2e6a, type: 3}
   - {fileID: 6305785080465449260, guid: 0cba0abd4489aa140a892d902144496a, type: 3}
-  difficultyReachTime: 15
-  startSpawnTime: 2
-  endSpawnTime: 0.5
+  minDistance: 30
+  maxDistance: 50
+  straightCoinOffset: 5
+  jumpCoinOffset: 6
 --- !u!4 &1583893391
 Transform:
   m_ObjectHideFlags: 0
@@ -11661,10 +11669,12 @@ MonoBehaviour:
   isStop: 0
   character: 0
   score: 0
+  minGameSpeed: 10
+  maxGameSpeed: 30
+  difficultyReachTime: 60
   coinScore: 200
   healToScore: 500
   GameOver: {fileID: 1901219305}
-  Retry: {fileID: 0}
   canGameOverInput: 0
 --- !u!114 &2014038255
 MonoBehaviour:
