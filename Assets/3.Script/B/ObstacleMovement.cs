@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour
 {
-    //신재호님 어시스트
-    public float speed;
 
     private void Update()
     {
-        gameObject.transform.Translate(Vector3.back * speed * Time.deltaTime);
+        if (!B_GameManager.instance.isLive) return;
+
+        float currentSpeed = B_GameManager.instance.currentGameSpeed;
+
+        transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
 
         if (transform.position.z < -15f)
         {

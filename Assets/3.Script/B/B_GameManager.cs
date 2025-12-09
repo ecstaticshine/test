@@ -29,6 +29,13 @@ public class B_GameManager : MonoBehaviour
     private float scoreBuffer = 0f;
     private float scorePerSecond = 1000f;
 
+    [Header("게임 속도 설정")]
+    public float minGameSpeed = 10f; // 처음 속도
+    public float maxGameSpeed = 30f; // 최대 속도
+    public float difficultyReachTime = 60f; // 최대 속도 도달 시간
+
+    public float currentGameSpeed { get; private set; }
+
     [Header("아이템 설정")]
     public int coinScore = 100;      // 코인 점수
     public int healToScore = 500;    // 회복템 -> 점수 변환 시 점수
@@ -126,6 +133,9 @@ public class B_GameManager : MonoBehaviour
         else
         {
             gameTime += Time.deltaTime;
+
+            float timeRatio = gameTime / difficultyReachTime;
+            currentGameSpeed = Mathf.Lerp(minGameSpeed, maxGameSpeed, timeRatio);
 
             scoreBuffer += Mathf.RoundToInt(scorePerSecond * scoreMultipler *Time.deltaTime);
 
@@ -228,20 +238,23 @@ public class B_GameManager : MonoBehaviour
             poolDictionary.Add(prefab.name, new Queue<GameObject>());
         }
 
+        GameObject obj = null;
+
         if (poolDictionary[prefab.name].Count > 0)
         {
-            GameObject obj = poolDictionary[prefab.name].Dequeue();
-            obj.SetActive(true);
-            obj.transform.position = position;
-            obj.transform.rotation = rotation;
-            return obj;
+            obj = poolDictionary[prefab.name].Dequeue();
         }
         else
         {
-            GameObject newObj = Instantiate(prefab, position, rotation);
-            newObj.name = prefab.name;
-            return newObj;
+            obj = Instantiate(prefab);
+            obj.name = prefab.name;
         }
+
+        obj.transform.position = position;
+        obj.transform.rotation = rotation;
+        obj.SetActive(true);
+
+        return obj;
     }
 
     public void Return(GameObject obj)

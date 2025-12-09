@@ -5,53 +5,81 @@ public class ItemPool : MonoBehaviour
 {
     public static ItemPool Instance;
 
-    [Header("코인 프리팹")]
-    public GameObject coinPrefab;
-    public GameObject heartPrefab;
+    [Header("프리팹 설정")]
+    [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private GameObject heartPrefab;
 
-    [Header("초기 생성 개수")]
-    public int initialCount = 100;
+    [Header("초기 설정")]
+    [SerializeField] private int initialCoinCount = 50;
+    [SerializeField] private int initialHeartCount = 5;
 
-    private Queue<GameObject> pool = new Queue<GameObject>();
+    private Queue<GameObject> coinPool = new Queue<GameObject>();
+    private Queue<GameObject> heartPool = new Queue<GameObject>();
 
     void Awake()
     {
         Instance = this;
-        CreatePool();
+        InitializePool();
     }
 
-    void CreatePool()
+    private void InitializePool()
     {
-        for (int i = 0; i < initialCount; i++)
+        // 코인 생성
+        for (int i = 0; i < initialCoinCount; i++)
         {
-            GameObject obj = Instantiate(coinPrefab);
-            obj.SetActive(false);
-            pool.Enqueue(obj);
+            CreateNewItem(coinPrefab, coinPool);
         }
-        GameObject heartObj = Instantiate(heartPrefab);
-        heartObj.SetActive(false);
-        pool.Enqueue(heartObj);
 
+        // 하트 생성
+        for (int i = 0; i < initialHeartCount; i++)
+        {
+            CreateNewItem(heartPrefab, heartPool);
+        }
+    }
+
+    private GameObject CreateNewItem(GameObject prefab, Queue<GameObject> pool)
+    {
+        GameObject obj = Instantiate(prefab);
+        obj.SetActive(false);
+        obj.transform.SetParent(transform);
+        pool.Enqueue(obj);
+        return obj;
     }
 
     public GameObject GetCoin()
     {
-        if (pool.Count == 0)
-        {
-            // 풀에 남은게 없으면 하나 더 만든다
-            GameObject extra = Instantiate(coinPrefab);
-            extra.SetActive(false);
-            return extra;
-        }
-
-        GameObject coin = pool.Dequeue();
-        coin.SetActive(true);
-        return coin;
+        return GetItem(coinPool, coinPrefab);
     }
 
-    public void ReturnCoin(GameObject coin)
+    public GameObject GetHeart()
     {
-        coin.SetActive(false);
-        pool.Enqueue(coin);
+        return GetItem(heartPool, heartPrefab);
+    }
+
+    private GameObject GetItem(Queue<GameObject> pool, GameObject prefab)
+    {
+        GameObject item;
+
+        if (pool.Count > 0)
+        {
+            item = pool.Dequeue();
+        }
+        else
+        {
+            item = CreateNewItem(prefab, pool);
+            pool.Dequeue();
+        }
+
+        item.SetActive(true);
+        return item;
+    }
+
+    public void ReturnItem(GameObject item, string type)
+    {
+        item.SetActive(false);
+        item.transform.SetParent(transform);
+
+        if (type == "Coin") coinPool.Enqueue(item);
+        else if (type == "Heart") heartPool.Enqueue(item);
     }
 }

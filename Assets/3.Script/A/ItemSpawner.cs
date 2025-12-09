@@ -1,54 +1,74 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
+    [Header("참조")]
+    [SerializeField] private Transform[] lanePosition;
 
-    [SerializeField] private GameObject plane1;
-    [SerializeField] private GameObject plane2;
+    [Header("생성 설정")]
+    [SerializeField] private float spawnY = 1.0f;
+    [SerializeField] private float itemInterval = 1.5f;
 
+    [Header("곡선(점프) 설정")]
+    [SerializeField] private float jumpArcHeight = 3.5f;
+    [SerializeField] private float jumpDistance = 12f;
 
-    void Start()
+    private const int COIN_COUNT = 3;
+
+    public void SpawnPattern(int safeLaneIndex, float startZ, bool isCurve = false)
     {
-        // 처음부터 여러 줄을 깔고 싶으면 여기에 spawn 반복
-        for (int i = 0; i < 50; i++)
-        {
-            SpawnCoinLine(15);
-        }
+        if (isCurve) SpawnJumpArc(safeLaneIndex, startZ);
+        else SpawnStraightLine(safeLaneIndex, startZ);
     }
 
-    public void SpawnCoinLine(int count)
+    private void SpawnStraightLine(int laneIndex, float startZ)
     {
-        int[] lanes = { -2, 0, 2 };
-
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < COIN_COUNT; i++)
         {
             GameObject coin = ItemPool.Instance.GetCoin();
 
-            // 뒤쪽 plane 기준으로 생성
-            Transform backPlane = GetBackPlane();
+            float posX = lanePosition[laneIndex].position.x;
+            float posZ = startZ + (i * itemInterval);
 
-            float zBack = Mathf.Max(plane1.transform.position.z, plane2.transform.position.z)/4;
-            float spawnZ = zBack + i * 2f;
-
-            int laneIndex = UnityEngine.Random.Range(0, 3);
-
-            coin.transform.SetParent(backPlane, true);
-            coin.transform.position = new Vector3(lanes[laneIndex], 1, spawnZ);
+            coin.transform.position = new Vector3(posX, spawnY, posZ);
+            AttachToFloor(coin, posZ);
         }
     }
 
-    public Transform GetBackPlane()
+    private void SpawnJumpArc(int laneIndex, float startZ)
     {
-        return plane1.transform.position.z > plane2.transform.position.z ?
-            plane1.transform : plane2.transform;
+        float posX = lanePosition[laneIndex].position.x;
+
+        for (int i = 0; i < COIN_COUNT; i++)
+        {
+            GameObject coin = ItemPool.Instance.GetCoin();
+
+            float t = (float)i / (COIN_COUNT - 1);
+            float currentZ = startZ + (t * jumpDistance);
+            float arcY = spawnY + (4 * jumpArcHeight * t * (1 - t));
+
+            coin.transform.position = new Vector3(posX, arcY, currentZ);
+            AttachToFloor(coin, currentZ);
+        }
     }
 
-    public void RespawnCoin(GameObject coin)
+    private void AttachToFloor(GameObject item, float worldZ)
     {
-        ItemPool.Instance.ReturnCoin(coin);
-        SpawnCoinLine(1); // 하나 사라지면 하나 새로 스폰
+        if (Scroll.Instance != null)
+        {
+            Transform targetFloor = Scroll.Instance.GetFloorAtPosition(worldZ);
+            if (targetFloor != null)
+            {
+                item.transform.SetParent(targetFloor, true);
+
+                var anim = item.GetComponent<Benjathemaker.SimpleGemsAnim>();
+                if (anim != null)
+                {
+                    anim.ResetPosition();
+                }
+            }
+        }
     }
 }

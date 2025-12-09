@@ -8,19 +8,16 @@ public class Item : MonoBehaviour
     public enum ItemType { Coin, Heal }
 
     [Header("아이템 설정")]
-    public ItemType type;      // 인스펙터에서 코인인지 힐인지 선택
-    public float rotateSpeed = 100f; // 뱅글뱅글 회전 속도
+    public ItemType type;
+    public float rotateSpeed = 100f;
 
-    private ItemSpawner spawner;
-
-    public float maxLifetime = 15f;
+    public float maxLifetime = 10f;
     private float lifetime = 0f;
 
-    void Start()
+    void OnEnable()
     {
-        spawner = FindAnyObjectByType<ItemSpawner>();
+        lifetime = 0f;
     }
-
 
     void Update()
     {
@@ -36,7 +33,6 @@ public class Item : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // 플레이어와 닿았을 때
         if (other.CompareTag("Player"))
         {
             if (type == ItemType.Coin)
@@ -49,13 +45,27 @@ public class Item : MonoBehaviour
                 B_GameManager.instance.GetHealItem();
                 Despawn();
             }
-            
         }
     }
 
-    void Despawn()
+    public void Despawn()
     {
-        spawner.RespawnCoin(gameObject);
-        gameObject.SetActive(false);
+        if (ItemPool.Instance != null)
+        {
+            transform.SetParent(ItemPool.Instance.transform);
+
+            if (type == ItemType.Coin)
+            {
+                ItemPool.Instance.ReturnItem(gameObject, "Coin");
+            }
+            else if (type == ItemType.Heal)
+            {
+                ItemPool.Instance.ReturnItem(gameObject, "Heart");
+            }
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
