@@ -109,6 +109,10 @@ public class B_GameManager : MonoBehaviour
                     {
                         SceneLoader.Instance.LoadInputScoreScene(score);
                     }
+                    else
+                    {
+                        SceneLoader.Instance.LoadResultScene();
+                    }
                 }
             }
         }
