@@ -62,6 +62,8 @@ public class B_Player : MonoBehaviour
     {
         if (isInvincible || currentHealth <= 0) return;
 
+        AudioManager.Instance.PlaySFX("Hurt");
+
         currentHealth -= damage;
         heartUI.UpdateHearts(currentHealth);
 
@@ -153,7 +155,6 @@ public class B_Player : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             OnDamaged(1);
-            AudioManager.Instance.PlaySFX("Hurt");
         }
     }
 
